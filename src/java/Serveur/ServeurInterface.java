@@ -11,5 +11,5 @@ import java.rmi.*;
  * @author hanene
  */
 public interface ServeurInterface extends Remote{
-    
+    //SERVEUR
 }
