@@ -5,14 +5,16 @@
  */
 package entites;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author hanene
  */
-public interface Cercle<T> {
+public class Cercle<T> {
     
-   
-    
+    private ArrayList<T> listeT;
+    private String nomCercle;
+      
 }

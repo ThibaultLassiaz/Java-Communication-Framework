@@ -11,6 +11,9 @@ import java.util.ArrayList;
  *
  * @author hanene
  */
+
+
+/*
 public class CercleInstance<T> implements Cercle<T> {
     
     private ArrayList<T> t;
@@ -19,19 +22,13 @@ public class CercleInstance<T> implements Cercle<T> {
         this.t=t;
     }
 
-    /**
-     * @return the t
-     */
     public ArrayList<T> getT() {
         return t;
     }
 
-    /**
-     * @param t the t to set
-     */
     public void setT(ArrayList<T> t) {
         this.t = t;
     }
     
-    
 }
+   */
