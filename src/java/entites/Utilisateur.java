@@ -13,13 +13,30 @@ import java.util.Date;
  */
 public class Utilisateur {
     private int id;
+    private String pseudo;
     private String nom;
     private String prenom;
     private Date dateNais;
     private enum Sexe{homme, femme};
+    private Sexe sexe;
     private String email;
     private String motDePasse;
     
+    public Utilisateur(int idUser, String pseudoUser, String motDePasseUser) {
+        this.id = idUser;
+        this.pseudo = pseudoUser;
+        this.motDePasse = motDePasseUser;    
+    }
+    
+    public Utilisateur(int idUser, String nomUser, String prenomUser, Date dateNaisUser, Sexe sexe, String emailUser, String motDePasseUser ){
+        this.id = idUser;
+        this.nom = nomUser;
+        this.prenom = prenomUser;
+        this.dateNais = dateNaisUser;
+        this.sexe = sexe;
+        this.email = emailUser;
+        this.motDePasse = motDePasseUser;    
+    }
     /**
      * @return the id
      */
@@ -27,6 +44,14 @@ public class Utilisateur {
         return id;
     }
 
+    public String getPseudo() {
+        return pseudo;
+    }
+    
+    public void setPseudo() {
+        this.pseudo = pseudo;
+    }
+    
     /**
      * @return the nom
      */
