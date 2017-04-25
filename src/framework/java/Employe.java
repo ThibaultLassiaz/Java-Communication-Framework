@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TestClass;
+package framework.java;
+
+import entites.Utilisateur;
 
 /**
  *
  * @author Asus G75
  */
-
-
-public class main {
- 
-    public static void main(String[] args) {
-        System.out.println("Hello");
+public class Employe extends Utilisateur{
+    
+    public Employe(int idUser, String pseudoUser, String motDePasseUser) {
+        super(idUser, pseudoUser, motDePasseUser);
     }
     
 }

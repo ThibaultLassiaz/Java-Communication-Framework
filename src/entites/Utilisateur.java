@@ -17,7 +17,7 @@ public class Utilisateur {
     private String nom;
     private String prenom;
     private Date dateNais;
-    private enum Sexe{homme, femme};
+    public enum Sexe{homme, femme};
     private Sexe sexe;
     private String email;
     private String motDePasse;
