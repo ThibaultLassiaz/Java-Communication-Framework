@@ -5,10 +5,16 @@
  */
 package entites;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hanene
  */
 public class UtilisateursInstance extends CercleInstance<Utilisateur> implements Utilisateurs{
+
+    public UtilisateursInstance(ArrayList<Utilisateur> t) {
+        super(t);
+    }
     
 }

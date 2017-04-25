@@ -11,4 +11,5 @@ package entites;
  */
 public interface Utilisateurs extends Cercle<Utilisateur>{
     
+    
 }
