@@ -12,25 +12,15 @@ import java.util.Map;
  * @author hanene
  */
 public class Lien<T>{
-<<<<<<< HEAD
-    Map<Integer,T> m;
-=======
-    
+   
     private Map<Integer,T> m;
->>>>>>> a73024f9a3754ec995fc9f2809fea83405194b1e
     String nomLien; 
     
     public Lien(Map<Integer, T> m) {
         this.m = m;
     }
-<<<<<<< HEAD
-    
-    
-    
-}
-=======
 
-    /**
+   /**
      * @return the m
      */
     public Map<Integer,T> getM() {
@@ -47,4 +37,3 @@ public class Lien<T>{
     
     
 }
->>>>>>> a73024f9a3754ec995fc9f2809fea83405194b1e
