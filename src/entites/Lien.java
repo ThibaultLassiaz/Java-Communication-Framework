@@ -5,33 +5,17 @@
  */
 package entites;
 
+import java.util.Map;
+
 /**
  *
  * @author hanene
  */
-public class lien {
-    private int id;
-    private String link;
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @return the link
-     */
-    public String getLink() {
-        return link;
-    }
-
-    /**
-     * @param link the link to set
-     */
-    public void setLink(String link) {
-        this.link = link;
-        //baseUri(link);
+public class Lien<T>{
+    Map<Integer,T> m;
+    String nomLien; 
+    
+    public Lien(Map<Integer, T> m) {
+        this.m = m;
     }
 }
