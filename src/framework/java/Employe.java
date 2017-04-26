@@ -5,13 +5,11 @@
  */
 package framework.java;
 
-import entites.Utilisateur;
-
 /**
  *
  * @author Asus G75
  */
-public class Employe extends Utilisateur{
+public class Employe extends entites.Employe{
     
     public Employe(int idUser, String pseudoUser, String motDePasseUser) {
         super(idUser, pseudoUser, motDePasseUser);

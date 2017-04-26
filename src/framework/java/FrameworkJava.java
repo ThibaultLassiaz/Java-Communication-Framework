@@ -6,7 +6,7 @@
 package framework.java;
 
 import entites.Cercle;
-import entites.Utilisateur;
+import entites.Employe;
 import java.util.ArrayList;
 
 /**
@@ -28,9 +28,9 @@ public class FrameworkJava {
         a1.add(e1);
         a1.add(e2);
         
-        ArrayList<Utilisateur> a2 = new ArrayList<Utilisateur>();
+        ArrayList<Employe> a2 = new ArrayList<Employe>();
         
-        Utilisateur u1 = new Utilisateur(3, "Thivault", "Test1");
+        Employe u1 = new Employe(3, "Thivault", "Test1");
         
         a2.add(m1);
         a2.add(e1);

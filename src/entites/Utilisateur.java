@@ -5,8 +5,6 @@
  */
 package entites;
 
-import java.util.Date;
-
 /**
  *
  * @author hanene
@@ -14,29 +12,14 @@ import java.util.Date;
 public class Utilisateur {
     private int id;
     private String pseudo;
-    private String nom;
-    private String prenom;
-    private Date dateNais;
-    public enum Sexe{homme, femme};
-    private Sexe sexe;
-    private String email;
     private String motDePasse;
     
-    public Utilisateur(int idUser, String pseudoUser, String motDePasseUser) {
-        this.id = idUser;
-        this.pseudo = pseudoUser;
-        this.motDePasse = motDePasseUser;    
-    }
-    
-    public Utilisateur(int idUser, String nomUser, String prenomUser, Date dateNaisUser, Sexe sexe, String emailUser, String motDePasseUser ){
-        this.id = idUser;
-        this.nom = nomUser;
-        this.prenom = prenomUser;
-        this.dateNais = dateNaisUser;
-        this.sexe = sexe;
-        this.email = emailUser;
-        this.motDePasse = motDePasseUser;    
-    }
+public Utilisateur (int id, String psoeudo, String mdp){
+    this.id=id;
+    this.pseudo=psoeudo;
+    this.motDePasse=mdp;
+}
+
     /**
      * @return the id
      */
@@ -44,68 +27,18 @@ public class Utilisateur {
         return id;
     }
 
+    /**
+     * @return the pseudo
+     */
     public String getPseudo() {
         return pseudo;
     }
-    
-    public void setPseudo() {
+
+    /**
+     * @param pseudo the pseudo to set
+     */
+    public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
-    }
-    
-    /**
-     * @return the nom
-     */
-    public String getNom() {
-        return nom;
-    }
-
-    /**
-     * @param nom the nom to set
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    /**
-     * @return the prenom
-     */
-    public String getPrenom() {
-        return prenom;
-    }
-
-    /**
-     * @param prenom the prenom to set
-     */
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    /**
-     * @return the dateNais
-     */
-    public Date getDateNais() {
-        return dateNais;
-    }
-
-    /**
-     * @param dateNais the dateNais to set
-     */
-    public void setDateNais(Date dateNais) {
-        this.dateNais = dateNais;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     /**
@@ -121,5 +54,4 @@ public class Utilisateur {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
-    
 }
