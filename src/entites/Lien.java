@@ -12,10 +12,28 @@ import java.util.Map;
  * @author hanene
  */
 public class Lien<T>{
-    Map<Integer,T> m;
+    
+    private Map<Integer,T> m;
     String nomLien; 
     
     public Lien(Map<Integer, T> m) {
         this.m = m;
     }
+
+    /**
+     * @return the m
+     */
+    public Map<Integer,T> getM() {
+        return m;
+    }
+
+    /**
+     * @param m the m to set
+     */
+    public void setM(Map<Integer,T> m) {
+        this.m = m;
+    }
+    
+    
+    
 }

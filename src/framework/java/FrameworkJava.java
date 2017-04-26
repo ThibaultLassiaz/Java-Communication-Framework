@@ -6,9 +6,12 @@
 package framework.java;
 
 import entites.Cercle;
+import entites.Lien;
 import static framework.java.Employe.Sexe.homme;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -33,5 +36,15 @@ public class FrameworkJava {
         Groupe<Employe> g1 = new Groupe<Employe>(a1, "Mon groupe de projet");
         
         System.out.println(g1);
+        
+        // L'employé Thibault est ami avec le manager Bapt
+        Amitie am1 = new Amitie(e1,m1);
+        Map map = new HashMap<Integer,Amitie>();
+        // A l'emplacement 1, on a l'amitié entre Thibault et Bapt
+        map.put(1, am1);
+        Lien<Amitie> l1 = new Lien(map);
+        l1.getM().put(2, am1);
+        
+        
     }
 }
