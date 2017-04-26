@@ -5,13 +5,13 @@
  */
 package framework.java;
 
-import entites.Employe;
+import entites.Utilisateur;
 
 /**
  *
  * @author Asus G75
  */
-public class Manager extends Employe{
+public class Manager extends Utilisateur{
     
     public Manager(int idUser, String pseudoUser, String motDePasseUser) {
         super(idUser, pseudoUser, motDePasseUser);

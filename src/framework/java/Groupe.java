@@ -6,17 +6,15 @@
 package framework.java;
 
 import entites.Cercle;
-import entites.Employe;
 import java.util.ArrayList;
 
 /**
  *
  * @author Asus G75
  */
-public class Groupe extends Cercle<Employe>{
+public class Groupe<T> extends Cercle{
     
-    public Groupe(ArrayList<Employe> listeT, String nomCercle) {
+    public Groupe(ArrayList<T> listeT, String nomCercle) {
         super(listeT, nomCercle);
     }
-    
 }

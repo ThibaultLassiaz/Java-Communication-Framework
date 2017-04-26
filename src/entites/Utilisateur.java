@@ -14,9 +14,9 @@ public class Utilisateur {
     private String pseudo;
     private String motDePasse;
     
-public Utilisateur (int id, String psoeudo, String mdp){
+public Utilisateur (int id, String pseudo, String mdp){
     this.id=id;
-    this.pseudo=psoeudo;
+    this.pseudo=pseudo;
     this.motDePasse=mdp;
 }
 
