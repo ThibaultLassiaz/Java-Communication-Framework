@@ -6,8 +6,9 @@
 package framework.java;
 
 import entites.Cercle;
-import entites.Employe;
+import static framework.java.Employe.Sexe.homme;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -19,25 +20,18 @@ public class FrameworkJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Employe e1 = new Employe(1, "Thibault", "Test");
-        Employe e2 = new Employe(2, "Hanene", "Test1");
-        Manager m1 = new Manager(4, "Bapt", "Teeeest");
-        
+          
         ArrayList<Employe> a1 = new ArrayList<Employe>();
+        Employe e1 = new Employe(1, "Thibault", "Test", "prenom", "nom", new Date(), homme , "Test@gmail.com"); 
         a1.add(e1);
-        a1.add(e2);
         
-        ArrayList<Employe> a2 = new ArrayList<Employe>();
-        
-        Employe u1 = new Employe(3, "Thivault", "Test1");
-        
+        ArrayList<Manager> a2 = new ArrayList<Manager>();
+        Manager m1 = new Manager(4, "Bapt", "Teeeest");
         a2.add(m1);
-        a2.add(e1);
         
-        Groupe g1 = new Groupe(a2, "Mon groupe de projet");
+        Cercle c1 = new Cercle<Manager>(a2,"Test");
+        Groupe<Employe> g1 = new Groupe<Employe>(a1, "Mon groupe de projet");
         
         System.out.println(g1);
     }
-    
 }
