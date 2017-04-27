@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inputStream;
+package outputStream;
 
 import java.io.IOException;
 import java.rmi.Remote;
@@ -13,26 +13,28 @@ import java.rmi.RemoteException;
  *
  * @author guezel
  */
-public interface RMIInputStreamInterface extends Remote {
+public interface OutputStreamInterface extends Remote {
+
     /**
-     * Lit un nombre d'octets dans un InputStream
-     * @param length le nombre d'octets à lire
-     * @return les données lues
+     * Ecrit un octet b précis dans l'OutputStream
+     * @param b l'octet à écrire
      * @throws IOException
      * @throws RemoteException 
      */
-    public byte[] read(int length) throws IOException, RemoteException;
+    public void write(int b) throws IOException, RemoteException;
 
     /**
-     * Lit le prochain octet de donnée dans un InputStream
-     * @return le prochain octet de donnée, -1 si la fin du stream est atteinte
+     * Ecrit len octets des données b à partir de l'indice off dans l'OutputStream
+     * @param b les données
+     * @param off l'indice
+     * @param len le nomre d'octets à écrire
      * @throws IOException
      * @throws RemoteException 
      */
-    public int read() throws IOException, RemoteException;
+    public void write(byte[] b, int off, int len) throws IOException, RemoteException;
 
     /**
-     * Ferme l'InputStream
+     * Ferme l'OutputStream
      * @throws IOException
      * @throws RemoteException 
      */

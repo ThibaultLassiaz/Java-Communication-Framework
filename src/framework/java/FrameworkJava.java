@@ -6,7 +6,7 @@
 package framework.java;
 
 import entites.Cercle;
-import entites.Liaison;
+import entites.Lien;
 import entites.ListeLiaison;
 import entites.Utilisateur;
 import static framework.java.Employe.Sexe.homme;

@@ -15,7 +15,7 @@ public class Utilisateur {
     private int id;
     private String pseudo;
     private String motDePasse;
-    private ArrayList<ListeLiaison>  listLien;
+    private ArrayList<ListeLiaison>  listeLaison;
     
 public Utilisateur (int id, String pseudo, String mdp){
     this.id=id;
@@ -68,14 +68,14 @@ public Utilisateur (int id, String pseudo, String mdp){
      * @return the listLien
      */
     public ArrayList<ListeLiaison> getListLien() {
-        return listLien;
+        return listeLaison;
     }
 
     /**
      * @param listLien the listLien to set
      */
     public void setListLien(ArrayList<ListeLiaison> listLien) {
-        this.listLien = listLien;
+        this.listeLaison = listLien;
     }
 
 }

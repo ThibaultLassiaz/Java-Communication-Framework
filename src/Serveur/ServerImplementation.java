@@ -5,8 +5,8 @@
  */
 package Serveur;
 
-import inputStream.RMIInputStreamImplementation;
-import inputStream.RMIInuputStream;
+import inputStream.InputStreamImplementation;
+import inputStream.InuputStreamDelegate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,8 +18,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import static java.rmi.server.UnicastRemoteObject.unexportObject;
-import outputStream.RMIOutputStream;
-import outputStream.RMIOutputStreamImplementation;
+import outputStream.OutputStreamDelegate;
+import outputStream.OutputStreamImplementation;
 
 /**
  *
@@ -58,12 +58,12 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     
     @Override
     public OutputStream getOutputStream(File f) throws IOException, RemoteException {
-        return new RMIOutputStream(new RMIOutputStreamImplementation(new FileOutputStream(f)));
+        return new OutputStreamDelegate(new OutputStreamImplementation(new FileOutputStream(f)));
     }
 
     @Override
     public InputStream getInputStream(File f) throws IOException, RemoteException {
-        return new RMIInuputStream(new RMIInputStreamImplementation(new FileInputStream(f)));
+        return new InuputStreamDelegate(new InputStreamImplementation(new FileInputStream(f)));
     }
 
     @Override

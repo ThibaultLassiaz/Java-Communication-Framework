@@ -5,14 +5,14 @@
  */
 package framework.java;
 
-import entites.Liaison;
+import entites.Lien;
 import entites.Utilisateur;
 
 /**
  *
  * @author Asus G75
  */
-public class Amitie extends Liaison {
+public class Amitie extends Lien {
         
     public Amitie(Utilisateur s1, Utilisateur s2) {
        super(s1,s2);
