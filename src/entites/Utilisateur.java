@@ -11,20 +11,31 @@ import java.util.ArrayList;
  *
  * @author hanene
  */
-public class Utilisateur {
-    private int id;
-    private String pseudo;
-    private String motDePasse;
-    private ArrayList<ListeLiaison>  listeLaison;
-    
-public Utilisateur (int id, String pseudo, String mdp){
-    this.id=id;
-    this.pseudo=pseudo;
-    this.motDePasse=mdp;
-}
+    public class Utilisateur {
+        private int id;
+        private String pseudo;
+        private String motDePasse;
+        private ArrayList<ListeLien> tousMesLiens;
 
-    public void SetListeLiens(ListeLiaison listLien) {
-        this.setListLien(new ArrayList<ListeLiaison>());
+    public Utilisateur (int id, String pseudo, String mdp){
+        this.setId(id);
+        this.setPseudo(pseudo);
+        this.setMotDePasse(mdp);
+    }
+
+    public Utilisateur (int id, String pseudo, String mdp, ArrayList<ListeLien> listeLaison) {
+        this.setPseudo(pseudo);
+        this.setMotDePasse(mdp);
+        this.setListLien(listeLaison);
+    }
+
+    
+    public void AddListeLien(ListeLien listLien) {
+        this.getListLien().add(listLien);
+    }
+    
+    public void InitTousLesLiens(ListeLien listLien) {
+        this.setListLien(new ArrayList<ListeLien>());
         this.getListLien().add(listLien);
     }
 
@@ -36,6 +47,11 @@ public Utilisateur (int id, String pseudo, String mdp){
         return id;
     }
 
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     /**
      * @return the pseudo
      */
@@ -67,15 +83,15 @@ public Utilisateur (int id, String pseudo, String mdp){
     /**
      * @return the listLien
      */
-    public ArrayList<ListeLiaison> getListLien() {
-        return listeLaison;
+    public ArrayList<ListeLien> getListLien() {
+        return tousMesLiens;
     }
 
     /**
      * @param listLien the listLien to set
      */
-    public void setListLien(ArrayList<ListeLiaison> listLien) {
-        this.listeLaison = listLien;
+    public void setListLien(ArrayList<ListeLien> listLien) {
+        this.tousMesLiens = listLien;
     }
 
 }

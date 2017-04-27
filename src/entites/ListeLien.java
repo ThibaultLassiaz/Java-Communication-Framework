@@ -11,11 +11,11 @@ import java.util.ArrayList;
  *
  * @author Asus G75
  */
-public class ListeLiaison<T> {
+public class ListeLien<T> {
     
     private ArrayList<T> listeliaison;
 
-    public ListeLiaison(ArrayList<T> listeliaison) {
+    public ListeLien(ArrayList<T> listeliaison) {
         this.listeliaison = listeliaison;
     } 
 }

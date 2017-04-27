@@ -7,7 +7,7 @@ package framework.java;
 
 import entites.Cercle;
 import entites.Lien;
-import entites.ListeLiaison;
+import entites.ListeLien;
 import entites.Utilisateur;
 import static framework.java.Employe.Sexe.homme;
 import java.util.ArrayList;
@@ -61,8 +61,8 @@ public class FrameworkJava {
         arm.add(am1);
         arm.add(am2);
         
-        ListeLiaison<Amitie> l1 = new ListeLiaison(arm);
+        ListeLien<Amitie> l1 = new ListeLien(arm);
 
-        e1.SetListeLiens(l1); 
+        e1.InitTousLesLiens(l1); 
     }
 }
