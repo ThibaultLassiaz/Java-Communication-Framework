@@ -59,7 +59,7 @@ public class DatabaseManager {
     }
 
     /**
-     * Fills the database with inserts
+     * Fill the database with inserts
      *
      * @param conn Connection
      * @throws SQLException
