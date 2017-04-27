@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
  *
  * @author guezel
  */
-public interface RMIOutputStreamInterface extends Remote {
+public interface OutputStreamInterface extends Remote {
 
     /**
      * Ecrit un octet b précis dans l'OutputStream

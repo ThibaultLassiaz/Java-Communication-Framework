@@ -14,11 +14,11 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author guezel
  */
-public class RMIOutputStreamImplementation implements RMIOutputStreamInterface{
+public class OutputStreamImplementation implements OutputStreamInterface{
 
     private final OutputStream os;
     
-    public RMIOutputStreamImplementation(OutputStream os) throws IOException {
+    public OutputStreamImplementation(OutputStream os) throws IOException {
         this.os=os;
         UnicastRemoteObject.exportObject(this, 1099);
     }

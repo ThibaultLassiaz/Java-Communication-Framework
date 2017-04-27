@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
  *
  * @author guezel
  */
-public interface RMIInputStreamInterface extends Remote {
+public interface InputStreamInterface extends Remote {
     /**
      * Lit un nombre d'octets dans un InputStream
      * @param length le nombre d'octets à lire

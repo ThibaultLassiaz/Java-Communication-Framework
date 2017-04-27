@@ -14,12 +14,12 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author guezel
  */
-public class RMIInputStreamImplementation implements RMIInputStreamInterface{
+public class InputStreamImplementation implements InputStreamInterface{
     
     private final InputStream is;
     private byte[] b;
     
-    public RMIInputStreamImplementation(InputStream is) throws IOException {
+    public InputStreamImplementation(InputStream is) throws IOException {
         this.is=is;
         UnicastRemoteObject.exportObject(this, 1099);
     }

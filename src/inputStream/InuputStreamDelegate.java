@@ -13,23 +13,23 @@ import java.io.Serializable;
  *
  * @author guezel
  */
-public class RMIInuputStream extends InputStream implements Serializable{
+public class InuputStreamDelegate extends InputStream implements Serializable{
 
-    private final RMIInputStreamInterface RMIisi;
+    private final InputStreamInterface isi;
     
-    public RMIInuputStream(RMIInputStreamInterface RMIisi) {
-        this.RMIisi=RMIisi;
+    public InuputStreamDelegate(InputStreamInterface isi) {
+        this.isi=isi;
     }
     
     /**
-     * Délégation : Fait un appel à la méthode read de RMIInputStreamInterface
+     * Délégation : Fait un appel à la méthode read de InputStreamInterface
      * @return Un entier de 1 à 255 correspondant au prochain octet de donnée,
      * -1 si fin du stream
      * @throws IOException 
      */
     @Override
     public int read() throws IOException {
-        return RMIisi.read();
+        return isi.read();
     }
     
     /**
@@ -43,7 +43,7 @@ public class RMIInuputStream extends InputStream implements Serializable{
      */
     @Override
     public int read(byte[] b, int off, int len) throws IOException {
-        byte[] b2 = RMIisi.read(len);
+        byte[] b2 = isi.read(len);
         if(b2 == null)
         {
             return -1;
