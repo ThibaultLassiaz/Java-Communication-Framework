@@ -49,7 +49,7 @@ public class DatabaseManager {
     }
 
     public static void fillBD(Connection conn) throws SQLException {
-        try(Statement stmt = conn.createStatement()) {
+        try (Statement stmt = conn.createStatement()) {
             //utlisateur
             stmt.executeQuery("insert into Utilisateur values ('001','bod2','05fls,'26-04-2017')");
 
@@ -59,6 +59,33 @@ public class DatabaseManager {
             stmt.executeQuery("insert into Employe values('assane',bod','5-10-94','homme','azoub@outlook.com')");
         }
 
-        
+    }
+
+    /**
+     * Commit est une procédure permettant de mettre à jour la base de donnée
+     * Oracle
+     */
+    public static void commit(Connection conn) {
+        try {
+            try (Statement stmt = conn.createStatement()) {
+                stmt.executeQuery("commit");
+            }
+        } catch (SQLException E) {
+            System.out.println("Erreur commit: " + E.getMessage());
+        }
+    }
+
+    /**
+     * rollback est une procédure permettant d'annuler toutes les modifications
+     * jusqu'au précédant commit
+     */
+    public static void rollback(Connection conn) {
+        try {
+            try (Statement stmt = conn.createStatement()) {
+                stmt.executeQuery("rollback");
+            }
+        } catch (SQLException E) {
+            System.out.println("Erreur rollback: " + E.getMessage());
+        }
     }
 }

@@ -52,13 +52,11 @@ import java.util.Scanner;
 }
      public static void deleteBD(Connection conn) throws SQLException{
         
-        Statement stmt=conn.createStatement();
-        
-       
-        stmt.executeQuery("drop table Utilisateur cascade constraints");
-        stmt.executeQuery("drop table Message cascade constraints");
-        stmt.executeQuery("drop table Employe cascade constraints");
-        stmt.close();
+        try (Statement stmt = conn.createStatement()) {
+            stmt.executeQuery("drop table Utilisateur cascade constraints");
+            stmt.executeQuery("drop table Message cascade constraints");
+            stmt.executeQuery("drop table Employe cascade constraints");
+        }
         
         
         
@@ -149,37 +147,35 @@ import java.util.Scanner;
             
             Scanner scanner = new Scanner(System.in);
 		 
-            Statement stmt = conn.createStatement() ;
-            ResultSet rs1 = stmt.executeQuery("select count(*) from Utilisateur");
-                 
-                  while(rs1.next()){  
-                         idUt= rs1.getInt(1) +1;
-                     }
-                    rs1.close();
-                 
-                 System.out.print("Creation d'un utilsateur");
-                System.out.println("-----------------------------");
-                
-                System.out.print("idUtilisateur : ");
-	        idUt=scanner.nextInt();
-                
-                System.out.print("Creer un pseudo : ");
-	        pseudo= scanner.next();
-	       
-                System.out.print("Creer un mot de passe : ");
-	        motDePasse= scanner.next();
-	        
-                
-                System.out.print("Saisir date de creation (type: 24-avr-2017)");
-                dateCreation=scanner.next();
-                 
-               
-                
-                //exceution de la requete
-                ResultSet rs = stmt.executeQuery("insert into Utilisateur values(" + idUt + ",'" + pseudo + "','" +  "',"+ motDePasse +"','" + dateCreation + ")" ) ;
-               
-             rs.close() ;
-		 stmt.close();
+        try (Statement stmt = conn.createStatement()) {
+                try (ResultSet rs1 = stmt.executeQuery("select count(*) from Utilisateur")) {
+                    while(rs1.next()){
+                        idUt= rs1.getInt(1) +1;
+                    }   }
+            
+            System.out.print("Creation d'un utilsateur");
+            System.out.println("-----------------------------");
+            
+            System.out.print("idUtilisateur : ");
+            idUt=scanner.nextInt();
+            
+            System.out.print("Creer un pseudo : ");
+            pseudo= scanner.next();
+            
+            System.out.print("Creer un mot de passe : ");
+            motDePasse= scanner.next();
+            
+            
+            System.out.print("Saisir date de creation (type: 24-avr-2017)");
+            dateCreation=scanner.next();
+            
+            
+            
+            //exceution de la requete
+            ResultSet rs = stmt.executeQuery("insert into Utilisateur values(" + idUt + ",'" + pseudo + "','" +  "',"+ motDePasse +"','" + dateCreation + ")" ) ;
+            
+            rs.close() ;
+        }
             
         }
         
@@ -190,31 +186,31 @@ import java.util.Scanner;
                 int idUt;
                  Scanner scanner = new Scanner(System.in);
 		 
-            Statement stmt = conn.createStatement() ;
+        try (Statement stmt = conn.createStatement()) {
             ResultSet rs1 = stmt.executeQuery("select count(*) from Message");
             
-             System.out.print("Envoi d'un message");
-                System.out.println("-----------------------------");
-                
-                System.out.print("idM : ");
-	        idM=scanner.nextInt();
-                
-                System.out.print("Envoi d'un message : ");
-	        message= scanner.next();
-	       
-                System.out.print("Saisir date de naissance (type: 24-avr-2017)");
-	        dateMess= scanner.next();
-	        
-                
-                System.out.print("identfiant destinataire");
-                idUt=scanner.nextInt();
-                
-                
-                 //exceution de la requete
-                ResultSet rs = stmt.executeQuery("insert into Message values(" + idM + ",'" + message + "','" +  "',"+ dateMess +"','" + idUt + ")" ) ;
-               
-             rs.close() ;
-		 stmt.close();
+            System.out.print("Envoi d'un message");
+            System.out.println("-----------------------------");
+            
+            System.out.print("idM : ");
+            idM=scanner.nextInt();
+            
+            System.out.print("Envoi d'un message : ");
+            message= scanner.next();
+            
+            System.out.print("Saisir date de naissance (type: 24-avr-2017)");
+            dateMess= scanner.next();
+            
+            
+            System.out.print("identfiant destinataire");
+            idUt=scanner.nextInt();
+            
+            
+            //exceution de la requete
+            ResultSet rs = stmt.executeQuery("insert into Message values(" + idM + ",'" + message + "','" +  "',"+ dateMess +"','" + idUt + ")" ) ;
+            
+            rs.close() ;
+        }
             
                 
                 

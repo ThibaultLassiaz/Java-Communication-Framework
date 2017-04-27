@@ -5,6 +5,7 @@
  */
 package connexionsgbdframework;
 
+import Serveur.database.DatabaseAccessProperties;
 import connexionsgbdframework.SQLWarningsExceptions;
 import java.sql.Connection;
 import java.sql.DriverManager;
