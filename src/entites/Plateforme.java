@@ -28,6 +28,10 @@ public class Plateforme {
         }
     }   
     
+    public void addUser(Utilisateur u){
+        this.listeUtilisateurs.add(u);
+    }
+    
     /**
      * @return the NomPlateforme
      */

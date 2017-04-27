@@ -61,8 +61,16 @@ public class FrameworkJava {
         arm.add(am1);
         arm.add(am2);
         
-        ListeLien<Amitie> l1 = new ListeLien(arm);
+        ListeLien<Amitie> l1 = new ListeLien();
+        l1.AddLienToList(am2);
+        
 
         e1.InitTousLesLiens(l1); 
+        
+        Canal canal1 = new Canal("Bonjour");
+        canal1.setListeUtilisateurs();
+        
+        Utilisateur u5 = new Utilisateur(6,"Le petit génie", "Drogue_dure");
+        canal1.addUser(u5);
     }
 }

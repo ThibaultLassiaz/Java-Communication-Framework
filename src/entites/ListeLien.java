@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package entites;
-
 import java.util.ArrayList;
 
 /**
@@ -13,9 +12,27 @@ import java.util.ArrayList;
  */
 public class ListeLien<T> {
     
-    private ArrayList<T> listeliaison;
+    private ArrayList<T> listelien;
 
-    public ListeLien(ArrayList<T> listeliaison) {
-        this.listeliaison = listeliaison;
-    } 
+    public ListeLien() {
+        this.InstanceListeLien();
+    }
+    
+    public void AddLienToList(T valeur) {
+        this.listelien.add(valeur);
+    }
+    
+    public void InstanceListeLien() {
+        this.listelien = new ArrayList();
+    }
+
+    /**
+     * @return the listeliaison
+     */
+    public ArrayList<T> getListelien() {
+        return listelien;
+    }
+    
+    
+    
 }
