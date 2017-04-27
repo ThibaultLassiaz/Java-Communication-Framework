@@ -5,6 +5,7 @@
  */
 package framework.java;
 
+import entites.ListeLiaison;
 import entites.Utilisateur;
 import java.util.Date;
 

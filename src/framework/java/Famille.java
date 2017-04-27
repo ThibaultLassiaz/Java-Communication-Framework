@@ -12,9 +12,10 @@ import entites.Utilisateur;
  *
  * @author Asus G75
  */
-public class Amitie extends Liaison {
-        
-    public Amitie(Utilisateur s1, Utilisateur s2) {
-       super(s1,s2);
-    }  
+public class Famille extends Liaison{
+    
+    public Famille(Utilisateur u1, Utilisateur u2) {
+        super(u1, u2);
+    }
+    
 }

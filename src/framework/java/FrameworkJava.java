@@ -6,7 +6,9 @@
 package framework.java;
 
 import entites.Cercle;
-import entites.Lien;
+import entites.Liaison;
+import entites.ListeLiaison;
+import entites.Utilisateur;
 import static framework.java.Employe.Sexe.homme;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +32,7 @@ public class FrameworkJava {
         
         ArrayList<Manager> a2 = new ArrayList<Manager>();
         Manager m1 = new Manager(4, "Bapt", "Teeeest");
+        Manager m2 = new Manager(5, "Hello", "Teeeest");
         a2.add(m1);
         
         Cercle c1 = new Cercle<Manager>(a2,"Test");
@@ -37,14 +40,29 @@ public class FrameworkJava {
         
         System.out.println(g1);
         
+        /*
         // L'employé Thibault est ami avec le manager Bapt
         Amitie am1 = new Amitie(e1,m1);
         Map map = new HashMap<Integer,Amitie>();
         // A l'emplacement 1, on a l'amitié entre Thibault et Bapt
         map.put(1, am1);
-        Lien<Amitie> l1 = new Lien(map);
+        ListeLiens<Amitie> l1 = new ListeLiens(map);
         l1.getM().put(2, am1);
         
+        ArrayList<Amitie> ar1 = new ArrayList();
+        ar1.push(am1);
+        Utilisateur.setLien(new ArrayList<ArrayList>());
+        */      
+        Amitie am1 = new Amitie(e1,m1);
+        Amitie am2 = new Amitie(e1,m2);
+        Famille fm1 = new Famille(e1,m1);
         
+        ArrayList<Amitie> arm = new ArrayList();
+        arm.add(am1);
+        arm.add(am2);
+        
+        ListeLiaison<Amitie> l1 = new ListeLiaison(arm);
+
+        e1.SetListeLiens(l1); 
     }
 }

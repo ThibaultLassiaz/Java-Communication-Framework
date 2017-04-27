@@ -5,6 +5,8 @@
  */
 package entites;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hanene
@@ -13,12 +15,19 @@ public class Utilisateur {
     private int id;
     private String pseudo;
     private String motDePasse;
+    private ArrayList<ListeLiaison>  listLien;
     
 public Utilisateur (int id, String pseudo, String mdp){
     this.id=id;
     this.pseudo=pseudo;
     this.motDePasse=mdp;
 }
+
+    public void SetListeLiens(ListeLiaison listLien) {
+        this.setListLien(new ArrayList<ListeLiaison>());
+        this.getListLien().add(listLien);
+    }
+
 
     /**
      * @return the id
@@ -54,4 +63,19 @@ public Utilisateur (int id, String pseudo, String mdp){
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
+
+    /**
+     * @return the listLien
+     */
+    public ArrayList<ListeLiaison> getListLien() {
+        return listLien;
+    }
+
+    /**
+     * @param listLien the listLien to set
+     */
+    public void setListLien(ArrayList<ListeLiaison> listLien) {
+        this.listLien = listLien;
+    }
+
 }

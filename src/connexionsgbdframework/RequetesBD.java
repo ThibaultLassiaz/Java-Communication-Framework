@@ -211,7 +211,7 @@ import java.util.Scanner;
                 
                 
                  //exceution de la requete
-                ResultSet rs = stmt.executeQuery("insert into Utilisateur values(" + idM + ",'" + message + "','" +  "',"+ dateMess +"','" + idUt + ")" ) ;
+                ResultSet rs = stmt.executeQuery("insert into Message values(" + idM + ",'" + message + "','" +  "',"+ dateMess +"','" + idUt + ")" ) ;
                
              rs.close() ;
 		 stmt.close();

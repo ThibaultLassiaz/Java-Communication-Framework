@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package framework.java;
-
-import entites.Liaison;
-import entites.Utilisateur;
+package entites;
 
 /**
  *
  * @author Asus G75
  */
-public class Amitie extends Liaison {
-        
-    public Amitie(Utilisateur s1, Utilisateur s2) {
-       super(s1,s2);
-    }  
+public class Liaison {
+    
+   private Utilisateur u1;
+   private Utilisateur u2;
+   
+   public Liaison(Utilisateur u1, Utilisateur u2) {
+       this.u1 = u1;
+       this.u2 = u2;
+   }
 }
