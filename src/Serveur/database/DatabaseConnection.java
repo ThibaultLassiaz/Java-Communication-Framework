@@ -19,10 +19,10 @@ public class DatabaseConnection {
 
     private static final String configureFile = "BD.properties";
 
-    private final Connection connection;
+    private static Connection connection;
 
     public DatabaseConnection() throws SQLException, ClassNotFoundException {
-        this.connection = this.databaseConnection();
+        connection = this.databaseConnection();
     }
 
     /**

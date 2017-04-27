@@ -11,8 +11,7 @@ public class TestClient {
         String url = "rmi://localhost/server";
         ServerInterface server = (ServerInterface) Naming.lookup(url);
 
-        File testFile = server.getFileToSend();
-        ci.download(server, testFile, new File("/home/g/guezel/download.all"));
+        ci.download(server, server.getFileToSend(), new File("/home/g/guezel/download.all"));
         System.exit(0);
     }
 }

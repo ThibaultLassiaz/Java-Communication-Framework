@@ -5,6 +5,7 @@
  */
 package Serveur;
 
+import Serveur.database.DatabaseConnection;
 import inputStream.InputStreamImplementation;
 import inputStream.InuputStreamDelegate;
 import java.io.File;
@@ -18,6 +19,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import static java.rmi.server.UnicastRemoteObject.unexportObject;
+import java.sql.SQLException;
 import outputStream.OutputStreamDelegate;
 import outputStream.OutputStreamImplementation;
 
@@ -28,25 +30,48 @@ import outputStream.OutputStreamImplementation;
 public class ServerImplementation extends UnicastRemoteObject implements ServerInterface {
 
     private static Registry rmiRegistry;
+    private static DatabaseConnection connection;
+
+    /**
+     * @return the connection
+     */
+    public static DatabaseConnection getConnection() {
+        return connection;
+    }
     private File fileToSend;
 
-    public ServerImplementation() throws RemoteException {        
+    public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {        
         super();
     }
 
     /**
      * Démarre le serveur en créant le registre RMI et en le liant au registre RMI
+     * @param ip l'adresse ip du serveur
      * @throws Exception 
      */
-    public void start() throws Exception {
-        //System.setProperty("java.rmi.server.hostname", "152.77.82.105");
+    public void start(String ip) throws Exception {
+        System.setProperty("java.rmi.server.hostname", ip);
         rmiRegistry = LocateRegistry.createRegistry(1099);
         rmiRegistry.bind("server", this);
         System.out.println("Server started");
     }
 
     /**
-     * 
+     * Démarre le serveur en créant le registre RMI et en le liant au registre RMI
+     * @param ip l'adresse ip du serveur
+     * @param port le port du registre rmi
+     * @throws Exception 
+     */
+    public void start(String ip, int port) throws Exception {
+        System.setProperty("java.rmi.server.hostname", ip);
+        rmiRegistry = LocateRegistry.createRegistry(port);
+        connection = new DatabaseConnection();
+        rmiRegistry.bind("server", this);
+        System.out.println("Server started");
+    }
+    
+    /**
+     * Retir le serveur du registre RMI
      * @throws Exception 
      */
     public void stop() throws Exception {
@@ -74,4 +99,11 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     public void setFileToSend(File f) throws RemoteException {
         this.fileToSend=f;
     }
+
+    @Override
+    public boolean connect(String login, String password) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }

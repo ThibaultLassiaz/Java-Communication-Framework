@@ -41,5 +41,10 @@ public class ClientImplementation extends UnicastRemoteObject implements ClientI
     public void download(ServerInterface server, File src, File dest) throws IOException, RemoteException {
         copy(server.getInputStream(src), server.getOutputStream(dest));
     }
+
+    @Override
+    public void connect(ServerInterface server, String login, String password) throws RemoteException {
+        
+    }
     
 }

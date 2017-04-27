@@ -42,5 +42,7 @@ public interface ServerInterface extends Remote {
      * @throws RemoteException 
      */
     public InputStream getInputStream(File f) throws IOException, RemoteException;
+    
+    public boolean connect(String login, String password) throws RemoteException;
 
 }

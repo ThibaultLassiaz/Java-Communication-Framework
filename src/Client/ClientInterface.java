@@ -22,4 +22,6 @@ public interface ClientInterface {
     
     public void download(ServerInterface server, File src, File dest) throws IOException, RemoteException;
     
+    public void connect(ServerInterface server, String login, String password) throws RemoteException;
+    
 }
