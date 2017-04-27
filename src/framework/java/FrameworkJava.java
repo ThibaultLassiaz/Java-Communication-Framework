@@ -72,5 +72,6 @@ public class FrameworkJava {
         
         Utilisateur u5 = new Utilisateur(6,"Le petit génie", "Drogue_dure");
         canal1.addUser(u5);
+       
     }
 }

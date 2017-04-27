@@ -28,7 +28,6 @@ import java.util.ArrayList;
         this.setMotDePasse(mdp);
         this.setListLien(listeLaison);
     }
-
     
     public void AddListeLien(ListeLien listLien) {
         this.getListLien().add(listLien);
@@ -39,6 +38,9 @@ import java.util.ArrayList;
         this.getListLien().add(listLien);
     }
 
+    public String getCurrentUserType() {
+        return this.getClass().getSimpleName();
+    }
 
     /**
      * @return the id
