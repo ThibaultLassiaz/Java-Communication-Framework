@@ -53,9 +53,6 @@ public class Plateforme {
         return listeUtilisateurs;
     }
 
-    /**
-     * @param listeUtilisateurs the listeUtilisateurs to set
-     */
     public void setListeUtilisateurs() {
         this.listeUtilisateurs =  new ArrayList();
     }
