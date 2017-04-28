@@ -4,7 +4,7 @@ import java.io.File;
 import java.rmi.Naming;
 import Serveur.ServerInterface;
 import entites.FileExtended;
-import entites.Video;
+import framework.java.Video;
 
 public class TestClient {
 

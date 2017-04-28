@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class FileExtended {
 
+    private int id;
     private File file;
     private String name;
     private String path;
@@ -28,7 +29,8 @@ public class FileExtended {
     private long size;
     private String extension;
     private FileTime creationDate;
-    private final static List<String> VIDEO_EXTENSION_LIST = new ArrayList() {
+    private TypeFichier type;
+    private static List<String> videoExtensions = new ArrayList() {
         {
             add("mkv");
             add("mp4");
@@ -39,19 +41,36 @@ public class FileExtended {
         }
     };
 
+    private static List<String> textExtensions = new ArrayList() {
+        {
+            add("txt");
+            add("doc");
+            add("docx");
+        }
+    };
+
     public FileExtended(File f) throws IOException {
         try {
             this.file = f;
             this.name = f.getName();
             this.path = f.getPath();
-            this.lastModifiedDate = f.lastModified();
             this.size = f.length();
-            this.extension = this.fileExtension(f);
-            this.creationDate = this.creationDate(f);
+            this.lastModifiedDate = f.lastModified();
+            this.fileExtension();
+            this.creationDate();
+            this.type();
         } catch (IOException e) {
             System.out.println("Erreur création fichier : " + e.getMessage());
         }
 
+    }
+
+    // Getters
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -62,24 +81,10 @@ public class FileExtended {
     }
 
     /**
-     * @param file the file to set
-     */
-    public void setFile(File file) {
-        this.file = file;
-    }
-
-    /**
      * @return the name
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -90,24 +95,10 @@ public class FileExtended {
     }
 
     /**
-     * @param path the path to set
-     */
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    /**
      * @return the lastModifiedDate
      */
     public long getLastModifiedDate() {
         return lastModifiedDate;
-    }
-
-    /**
-     * @param lastModifiedDate the lastModifiedDate to set
-     */
-    public void setLastModifiedDate(long lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
     }
 
     /**
@@ -118,68 +109,10 @@ public class FileExtended {
     }
 
     /**
-     * @param size the size to set
-     */
-    public void setSize(long size) {
-        this.size = size;
-    }
-
-    public boolean isFile() {
-        return this.getFile().isFile();
-    }
-
-    /**
-     * Return the extension of a file
-     *
-     * @param f the file to evaluate
-     * @return the extension of the file or "" is there is no one
-     */
-    private String fileExtension(File f) {
-        String n = this.getName();
-        if (n.lastIndexOf(".") != -1 && n.lastIndexOf(".") != 0) {
-            return n.substring(n.lastIndexOf(".") + 1);
-        } else {
-            return "";
-        }
-    }
-
-    /**
      * @return the extension
      */
     public String getExtension() {
         return extension;
-    }
-
-    /**
-     * @param extension the extension to set
-     */
-    public void setExtension(String extension) {
-        this.extension = extension;
-    }
-
-    /**
-     *
-     * @param f Le fichier dont on veut connaitre la date de création
-     * @return Un FileTime correspond à la date de création du fichier
-     * @throws IOException
-     */
-    public FileTime creationDate(File f) throws IOException {
-        try {
-            Path p = Paths.get(this.getPath());
-            BasicFileAttributes attributes = Files.readAttributes(p, BasicFileAttributes.class);
-            return attributes.creationTime();
-        } catch (IOException e) {
-            System.out.println("Erreur détermination date de création du fichier : " + e.getMessage());
-            return null;
-        }
-    }
-
-    /**
-     *
-     * @return true if the extension is included in VIDEO_EXTENSION_LIST
-     */
-    public boolean isVideo() {
-        return getVIDEO_EXTENSION_LIST().stream().anyMatch((s) -> (this.getExtension().equals(s)));
     }
 
     /**
@@ -190,16 +123,134 @@ public class FileExtended {
     }
 
     /**
+     * @return the type
+     */
+    public TypeFichier getType() {
+        return type;
+    }
+
+    /**
+     * @return the VIDEO_EXTENSION_LIST
+     */
+    public static List<String> getVIDEO_EXTENSION_LIST() {
+        return videoExtensions;
+    }
+
+    /**
+     * @return the TEXTFILE_EXTENSION_LIST
+     */
+    public static List<String> getTEXTFILE_EXTENSION_LIST() {
+        return textExtensions;
+    }
+
+    // Setters
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    /**
+     */
+    public void setLastModifiedDate() {
+        this.lastModifiedDate = this.file.lastModified();
+    }
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    /**
+     * @param extension the extension to set
+     */
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
+    private void fileExtension() {
+        String n = this.getName();
+        if (n.lastIndexOf(".") != -1 && n.lastIndexOf(".") != 0) {
+            this.setExtension(n.substring(n.lastIndexOf(".") + 1));
+        } else {
+            this.setExtension("");
+        }
+    }
+
+    /**
      * @param creationDate the creationDate to set
      */
     public void setCreationDate(FileTime creationDate) {
         this.creationDate = creationDate;
     }
-    
-     /**
-     * @return the VIDEO_EXTENSION_LIST
-     */
-    public static List<String> getVIDEO_EXTENSION_LIST() {
-        return VIDEO_EXTENSION_LIST;
+
+    public void creationDate() throws IOException {
+        try {
+            Path p = Paths.get(this.getPath());
+            BasicFileAttributes attributes = Files.readAttributes(p, BasicFileAttributes.class);
+            this.setCreationDate(attributes.creationTime());
+        } catch (IOException e) {
+            System.out.println("Erreur détermination date de création du fichier : " + e.getMessage());
+            this.setCreationDate(null);
+        }
     }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(TypeFichier type) {
+        this.type = type;
+    }
+
+    private void type() {
+        if (this.isVideo()) {
+            this.setType(TypeFichier.V);
+        } else if (this.isText()) {
+            this.setType(TypeFichier.T);
+        } else {
+            this.setType(TypeFichier.I);
+        }
+    }
+
+    /**
+     *
+     * @return vrai si l'extension est présente dans la VIDEO_EXTENSION_LIST
+     */
+    public boolean isVideo() {
+        return getVIDEO_EXTENSION_LIST().stream().anyMatch((s) -> (this.getExtension().equals(s)));
+    }
+
+    /**
+     *
+     * @return vrai si l'extension est présente dans la TEXTFILE_EXTENSION_LIST
+     */
+    public boolean isText() {
+        return getTEXTFILE_EXTENSION_LIST().stream().anyMatch((s) -> (this.getExtension().equals(s)));
+    }
+
+    public void addVideoExtension(String ext) {
+        getVIDEO_EXTENSION_LIST().add(ext);
+    }
+
+    public void addTextExtension(String ext) {
+        getTEXTFILE_EXTENSION_LIST().add(ext);
+    }
+
 }

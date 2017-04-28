@@ -31,13 +31,6 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 
     private static Registry rmiRegistry;
     private static DatabaseConnection connection;
-
-    /**
-     * @return the connection
-     */
-    public static DatabaseConnection getConnection() {
-        return connection;
-    }
     private File fileToSend;
 
     public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {        
@@ -72,7 +65,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     }
     
     /**
-     * Retir le serveur du registre RMI
+     * Retire le serveur du registre RMI
      * @throws Exception 
      */
     public void stop() throws Exception {
@@ -82,29 +75,66 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
         System.out.println("Server stopped");
     }
     
+    /**
+     * Renvoie l'outputstream prévu pour la délégation pour un fichier donné
+     * @param f Le fichier 
+     * @return L'outputstream de délégation
+     * @throws IOException
+     * @throws RemoteException 
+     */
     @Override
     public OutputStream getOutputStream(File f) throws IOException, RemoteException {
         return new OutputStreamDelegate(new OutputStreamImplementation(new FileOutputStream(f)));
     }
 
+    /**
+     * Renvoie l'inputstream prévu pour la délégation pour un fichier donné
+     * @param f Le fichier
+     * @return L'inputstream de délégation
+     * @throws IOException
+     * @throws RemoteException 
+     */
     @Override
     public InputStream getInputStream(File f) throws IOException, RemoteException {
         return new InuputStreamDelegate(new InputStreamImplementation(new FileInputStream(f)));
     }
 
+    /**
+     * Renvoie le fichier à envoyer sur un client
+     * @return Le fichier à envoyer
+     * @throws RemoteException 
+     */
     @Override
     public File getFileToSend() throws RemoteException {
         return this.fileToSend;
     }
     
+    /**
+     * Enregistre le fichier à envoyer 
+     * @param f Le fichier à envoyer
+     * @throws RemoteException 
+     */
     public void setFileToSend(File f) throws RemoteException {
         this.fileToSend=f;
     }
 
+    /**
+     * 
+     * @param login
+     * @param password
+     * @return
+     * @throws RemoteException 
+     */
     @Override
     public boolean connect(String login, String password) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /**
+     * @return the connection
+     */
+    public static DatabaseConnection getConnection() {
+        return connection;
+    }
     
 }
