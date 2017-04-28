@@ -17,7 +17,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class InputStreamImplementation implements InputStreamInterface{
     
     private final InputStream is;
-    private byte[] b;
+    private byte[] data;
     
     public InputStreamImplementation(InputStream is) throws IOException {
         this.is=is;
@@ -35,22 +35,22 @@ public class InputStreamImplementation implements InputStreamInterface{
      */
     @Override
     public byte[] read(int length) throws IOException, RemoteException {
-        if(b==null||b.length!=length)
+        if(data==null||data.length!=length)
         {
-            b = new byte[length];
+            data = new byte[length];
         }
-        int length2 = is.read(b);
-        if(length2 < 0)
+        int realLength = is.read(data);
+        if(realLength < 0)
             return null;
-        if(length2!=length)
+        if(realLength!=length)
         {
-            byte[] b2 = new byte[length2];
-            System.arraycopy(b, 0, b2, 0, length2);
-            return b2;
+            byte[] realData = new byte[realLength];
+            System.arraycopy(data, 0, realData, 0, realLength);
+            return realData;
         }
         else 
         {
-            return b;
+            return data;
         }
     }
 

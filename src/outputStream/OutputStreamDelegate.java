@@ -33,14 +33,14 @@ public class OutputStreamDelegate extends OutputStream implements Serializable{
     
     /**
      * Délégation : Appel à la méthode write de OutputStreamInterface
-     * @param b les données
-     * @param off l'indice
-     * @param len le nombre d'octets à écrire
+     * @param data les données
+     * @param offset l'indice
+     * @param length le nombre d'octets à écrire
      * @throws IOException 
      */
     @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        osi.write(b, off, len);
+    public void write(byte[] data, int offset, int length) throws IOException {
+        osi.write(data, offset, length);
     }
     
     /**

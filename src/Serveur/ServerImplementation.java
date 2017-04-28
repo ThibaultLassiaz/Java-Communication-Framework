@@ -84,7 +84,6 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     /**
      * Renvoie l'outputstream prévu pour la délégation pour un fichier donné
      *
-     * @param f Le fichier
      * @return L'outputstream de délégation
      * @throws IOException
      * @throws RemoteException
@@ -97,7 +96,6 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     /**
      * Renvoie l'inputstream prévu pour la délégation pour un fichier donné
      *
-     * @param f Le fichier
      * @return L'inputstream de délégation
      * @throws IOException
      * @throws RemoteException

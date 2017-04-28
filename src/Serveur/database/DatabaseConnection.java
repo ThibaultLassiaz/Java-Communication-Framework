@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class DatabaseConnection {
 
-    private static final String configureFile = "BD.properties";
+    private static final String CONFIGURATION_FILE = "BD.properties";
 
     private static Connection connection;
 
@@ -63,13 +63,7 @@ public class DatabaseConnection {
     public synchronized boolean checkAuthenticity(Connection conn, String login, String password) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT idUt FROM Utilisateur WHERE pseudo='" + login + "' AND motDePasse='" + password + "'");
-            if (rs.next()) {
-                System.out.println("OK");
-                return true;
-            } else {
-                System.out.println("NON");
-                return false;
-            }
+            return rs.next();
         } catch (SQLException e) {
             System.out.println("Erreur de connexion : " + e.getMessage());
             DatabaseManager.rollback(this.getConnection());
@@ -78,10 +72,10 @@ public class DatabaseConnection {
     }
 
     /**
-     * @return the configureFile
+     * @return the CONFIGURATION_FILE
      */
     public static String getConfigureFile() {
-        return configureFile;
+        return CONFIGURATION_FILE;
     }
 
     /**

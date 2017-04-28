@@ -35,22 +35,22 @@ public class InuputStreamDelegate extends InputStream implements Serializable{
     /**
      * Lis len octets d'un tableau d'octets b à partir de l'indice off
      * et retourne le nombre d'octets lus
-     * @param b la tableau dans lequel on lit les données
-     * @param off l'indice à partir duquel les données sont lus
-     * @param len le nombre maximum d'octets à lire
+     * @param data la tableau dans lequel on lit les données
+     * @param offset l'indice à partir duquel les données sont lus
+     * @param length le nombre maximum d'octets à lire
      * @return le nombre d'octets lus, -1 si le tableau d'octets est null
      * @throws IOException 
      */
     @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        byte[] b2 = isi.read(len);
-        if(b2 == null)
+    public int read(byte[] data, int offset, int length) throws IOException {
+        byte[] realData = isi.read(length);
+        if(realData == null)
         {
             return -1;
         }
-        int i = b2.length;
-        System.arraycopy(b2, 0, b, off, i);
-        return i;
+        int dataLengthRead = realData.length;
+        System.arraycopy(realData, 0, data, offset, dataLengthRead);
+        return dataLengthRead;
     }
     
     /**

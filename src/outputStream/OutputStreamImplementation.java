@@ -36,15 +36,15 @@ public class OutputStreamImplementation implements OutputStreamInterface{
 
     /**
      * Délégation : Appel à la méthode write de OutputStream
-     * @param b les données à écrire
-     * @param off l'indice à partir duquel on écrit les données de b
-     * @param len le nombre d'octets à écrire
+     * @param data les données à écrire
+     * @param offset l'indice à partir duquel on écrit les données de b
+     * @param length le nombre d'octets à écrire
      * @throws IOException
      * @throws RemoteException 
      */
     @Override
-    public void write(byte[] b, int off, int len) throws IOException, RemoteException {
-        os.write(b, off, len);
+    public void write(byte[] data, int offset, int length) throws IOException, RemoteException {
+        os.write(data, offset, length);
     }
 
     /**
