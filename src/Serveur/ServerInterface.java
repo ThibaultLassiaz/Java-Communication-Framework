@@ -5,12 +5,14 @@
  */
 package Serveur;
 
+import entites.FileExtended;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,29 +22,42 @@ public interface ServerInterface extends Remote {
 
     /**
      * Renvoie le fichier à écrire sur le client
+     *
      * @return le fichier à écrire
-     * @throws RemoteException 
+     * @throws RemoteException
      */
     public File getFileToSend() throws RemoteException;
 
     /**
      * Renvoie un OutputStream correspondant au fichier à écrire sur le client
-     * @param f le fichier à écrire
+     *
+     * @param fe le fichier à écrire
      * @return l'OutputStream
      * @throws IOException
-     * @throws RemoteException 
+     * @throws RemoteException
      */
-    public OutputStream getOutputStream(File f) throws IOException, RemoteException;
+    public OutputStream getOutputStream(FileExtended fe) throws IOException, RemoteException;
 
     /**
      * Renvoie un InputStream correspondant au fichier à écrire sur le client
-     * @param f le fichier à écrire
+     *
+     * @param fe le fichier à écrire
      * @return l'InputStream
      * @throws IOException
-     * @throws RemoteException 
+     * @throws RemoteException
      */
-    public InputStream getInputStream(File f) throws IOException, RemoteException;
-    
-    public boolean connect(String login, String password) throws RemoteException;
+    public InputStream getInputStream(FileExtended fe) throws IOException, RemoteException;
+
+    public boolean connect(String login, String password) throws RemoteException, SQLException;
+
+    /**
+     * Envoie un fichier sur le serveur qui le chargera ensuite en base de
+     * données
+     *
+     * @param fe le fichier à envoyer sur le serveur
+     * @throws IOException
+     * @throws RemoteException
+     */
+    public void uploadFichier(FileExtended fe) throws IOException, RemoteException;
 
 }

@@ -17,11 +17,9 @@ import Serveur.ServerInterface;
  * @author guezel
  */
 public interface ClientInterface {
-    
-    public void copy(InputStream is, OutputStream os) throws IOException, RemoteException;
-    
-    public void download(ServerInterface server, File src, File dest) throws IOException, RemoteException;
-    
-    public void connect(ServerInterface server, String login, String password) throws RemoteException;
-    
+
+    //public void copy(InputStream is, OutputStream os) throws IOException, RemoteException;
+
+    //public void download(ServerInterface server, File src, File dest) throws IOException, RemoteException;
+
 }

@@ -6,6 +6,7 @@
 package Serveur;
 
 import Serveur.database.DatabaseConnection;
+import entites.FileExtended;
 import inputStream.InputStreamImplementation;
 import inputStream.InuputStreamDelegate;
 import java.io.File;
@@ -30,18 +31,21 @@ import outputStream.OutputStreamImplementation;
 public class ServerImplementation extends UnicastRemoteObject implements ServerInterface {
 
     private static Registry rmiRegistry;
-    private static DatabaseConnection connection;
+    private static DatabaseConnection dc;
     private File fileToSend;
+    public final static int BUFFER_SIZE = 1024 * 64;
 
-    public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {        
+    public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {
         super();
-        connection = new DatabaseConnection();
+        dc = new DatabaseConnection();
     }
 
     /**
-     * Démarre le serveur en créant le registre RMI et en le liant au registre RMI
+     * Démarre le serveur en créant le registre RMI et en le liant au registre
+     * RMI
+     *
      * @param ip l'adresse ip du serveur
-     * @throws Exception 
+     * @throws Exception
      */
     public void start(String ip) throws Exception {
         System.setProperty("java.rmi.server.hostname", ip);
@@ -51,22 +55,24 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     }
 
     /**
-     * Démarre le serveur en créant le registre RMI et en le liant au registre RMI
+     * Démarre le serveur en créant le registre RMI et en le liant au registre
+     * RMI
+     *
      * @param ip l'adresse ip du serveur
      * @param port le port du registre rmi
-     * @throws Exception 
+     * @throws Exception
      */
     public void start(String ip, int port) throws Exception {
         System.setProperty("java.rmi.server.hostname", ip);
         rmiRegistry = LocateRegistry.createRegistry(port);
-        connection = new DatabaseConnection();
         rmiRegistry.bind("server", this);
         System.out.println("Server started");
     }
-    
+
     /**
      * Retire le serveur du registre RMI
-     * @throws Exception 
+     *
+     * @throws Exception
      */
     public void stop() throws Exception {
         rmiRegistry.unbind("server");
@@ -74,67 +80,95 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
         unexportObject(rmiRegistry, true);
         System.out.println("Server stopped");
     }
-    
+
     /**
      * Renvoie l'outputstream prévu pour la délégation pour un fichier donné
-     * @param f Le fichier 
+     *
+     * @param f Le fichier
      * @return L'outputstream de délégation
      * @throws IOException
-     * @throws RemoteException 
+     * @throws RemoteException
      */
     @Override
-    public OutputStream getOutputStream(File f) throws IOException, RemoteException {
-        return new OutputStreamDelegate(new OutputStreamImplementation(new FileOutputStream(f)));
+    public OutputStream getOutputStream(FileExtended fe) throws IOException, RemoteException {
+        return new OutputStreamDelegate(new OutputStreamImplementation(new FileOutputStream(fe.getFile())));
     }
 
     /**
      * Renvoie l'inputstream prévu pour la délégation pour un fichier donné
+     *
      * @param f Le fichier
      * @return L'inputstream de délégation
      * @throws IOException
-     * @throws RemoteException 
+     * @throws RemoteException
      */
     @Override
-    public InputStream getInputStream(File f) throws IOException, RemoteException {
-        return new InuputStreamDelegate(new InputStreamImplementation(new FileInputStream(f)));
+    public InputStream getInputStream(FileExtended fe) throws IOException, RemoteException {
+        return new InuputStreamDelegate(new InputStreamImplementation(new FileInputStream(fe.getFile())));
     }
 
     /**
      * Renvoie le fichier à envoyer sur un client
+     *
      * @return Le fichier à envoyer
-     * @throws RemoteException 
+     * @throws RemoteException
      */
     @Override
     public File getFileToSend() throws RemoteException {
         return this.fileToSend;
     }
-    
+
     /**
-     * Enregistre le fichier à envoyer 
+     * Enregistre le fichier à envoyer
+     *
      * @param f Le fichier à envoyer
-     * @throws RemoteException 
+     * @throws RemoteException
      */
     public void setFileToSend(File f) throws RemoteException {
-        this.fileToSend=f;
+        this.fileToSend = f;
     }
 
     /**
-     * 
-     * @param login
-     * @param password
+     *
+     * @param login le potentiel login
+     * @param password le potentiel mot de passe
      * @return
-     * @throws RemoteException 
+     * @throws RemoteException
+     * @throws SQLException
      */
     @Override
-    public boolean connect(String login, String password) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean connect(String login, String password) throws RemoteException, SQLException {
+        return dc.checkAuthenticity(dc.getConnection(), login, password);
     }
-    
+
     /**
      * @return the connection
      */
     public static DatabaseConnection getConnection() {
-        return connection;
+        return dc;
+    }
+
+    public void copy(InputStream is, OutputStream os) throws IOException, RemoteException {
+        byte[] b = new byte[BUFFER_SIZE];
+        int length;
+        while ((length = is.read(b)) >= 0) {
+            os.write(b, 0, length);
+        }
+        is.close();
+        os.close();
+    }
+
+    @Override
+    public void uploadFichier(FileExtended fe) throws IOException, RemoteException {
+        this.copy(this.getInputStream(fe), this.getOutputStream(fe));
+        // Appeler insert pour mettre les infos du fichier en bd
     }
     
+    public void downloadFichier(String nomFichier) throws IOException, RemoteException {
+        // Appeler select pour recuperer le fichier
+        FileExtended fe = null;
+        // Récupérer le fichier sur le server
+        this.copy(this.getInputStream(fe), this.getOutputStream(fe));
+    }
+
 }

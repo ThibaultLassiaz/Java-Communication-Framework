@@ -17,20 +17,19 @@ import Serveur.ServerInterface;
  *
  * @author guezel
  */
-public class ClientImplementation extends UnicastRemoteObject implements ClientInterface{
-    
-    public final static int BUFFER_SIZE = 1024*64;
+public class ClientImplementation extends UnicastRemoteObject implements ClientInterface {
 
-    public ClientImplementation() throws RemoteException{
+    //public final static int BUFFER_SIZE = 1024 * 64;
+
+    public ClientImplementation() throws RemoteException {
         super();
     }
-    
-    @Override
+
+    /*@Override
     public void copy(InputStream is, OutputStream os) throws IOException, RemoteException {
         byte[] b = new byte[BUFFER_SIZE];
         int length;
-        while((length=is.read(b)) >= 0)
-        {
+        while ((length = is.read(b)) >= 0) {
             os.write(b, 0, length);
         }
         is.close();
@@ -40,11 +39,6 @@ public class ClientImplementation extends UnicastRemoteObject implements ClientI
     @Override
     public void download(ServerInterface server, File src, File dest) throws IOException, RemoteException {
         copy(server.getInputStream(src), server.getOutputStream(dest));
-    }
+    }*/
 
-    @Override
-    public void connect(ServerInterface server, String login, String password) throws RemoteException {
-        
-    }
-    
 }
