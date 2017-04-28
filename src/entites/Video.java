@@ -5,7 +5,7 @@
  */
 package entites;
 
-import com.xuggle.xuggler.IContainer;
+//import com.xuggle.xuggler.IContainer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,27 +17,12 @@ import java.util.List;
  */
 public class Video extends FileExtended {
 
-    private static final List<String> VIDEO_EXTENSION_LIST = new ArrayList() {{
-        add("mkv");
-        add("mp4");
-        add("avi");
-        add("wmv");
-        add("mov");
-        add("mpg");
-    }};
     private long duration;
     
     public Video(File f) throws IOException {
         super(f);
-        this.duration = duration();
+        //this.duration = duration();
         
-    }
-    /**
-     * 
-     * @return true if the extension is included in VIDEO_EXTENSION_LIST
-     */
-    private boolean isVideo() {
-        return VIDEO_EXTENSION_LIST.stream().anyMatch((s) -> (this.getExtension().equals(s)));
     }
 
     /**
@@ -54,7 +39,7 @@ public class Video extends FileExtended {
         this.duration = duration;
     }
     
-    public long duration() {
+    /*public long duration() {
         IContainer icontainer = IContainer.make();
         int res = icontainer.open(this.getPath(), IContainer.Type.READ, null);
         if(res>=0)
@@ -65,5 +50,5 @@ public class Video extends FileExtended {
         {
             return -1;
         }
-    }
+    }*/
 }

@@ -42,6 +42,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 
     public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {        
         super();
+        connection = new DatabaseConnection();
     }
 
     /**
