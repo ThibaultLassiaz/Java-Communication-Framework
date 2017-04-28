@@ -37,7 +37,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 
     public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {
         super();
-        dc = new DatabaseConnection();
+        //dc = new DatabaseConnection();
     }
 
     /**
@@ -160,7 +160,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 
     @Override
     public void uploadFichier(FileExtended fe) throws IOException, RemoteException {
-        this.copy(this.getInputStream(fe), this.getOutputStream(fe));
+        this.copy(this.getInputStream(fe), this.getOutputStream(new FileExtended(new File("D:\\RMI\\upload.mp4"))));
         // Appeler insert pour mettre les infos du fichier en bd
     }
     
