@@ -30,7 +30,7 @@ public class FileExtended {
     private String extension;
     private FileTime creationDate;
     private TypeFichier type;
-    private static List<String> videoExtensions = new ArrayList() {
+    private static final List<String> videoExtensions = new ArrayList() {
         {
             add("mkv");
             add("mp4");
@@ -41,7 +41,7 @@ public class FileExtended {
         }
     };
 
-    private static List<String> textExtensions = new ArrayList() {
+    private static final List<String> textExtensions = new ArrayList() {
         {
             add("txt");
             add("doc");
