@@ -11,7 +11,7 @@ import entites.Plateforme;
  */
 public class Canal extends Plateforme{
     
-    public Canal(String nom) {
-        super(nom);
+    public Canal(int id, String nom) {
+        super(id, nom);
     }
 }

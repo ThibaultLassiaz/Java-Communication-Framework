@@ -13,10 +13,12 @@ import java.util.ArrayList;
  */
 public class Plateforme {
        
+    private int idPlateforme;
     private String NomPlateforme;
     private ArrayList<Utilisateur> listeUtilisateurs;
     
-    public Plateforme(String nom) {
+    public Plateforme(int id, String nom) {
+        this.setIdPlateforme(id);
         this.setNomPlateforme(nom);
         this.setListeUtilisateurs();
     }
@@ -55,5 +57,19 @@ public class Plateforme {
 
     public void setListeUtilisateurs() {
         this.listeUtilisateurs =  new ArrayList();
+    }
+
+    /**
+     * @return the idPlateforme
+     */
+    public int getIdPlateforme() {
+        return idPlateforme;
+    }
+
+    /**
+     * @param idPlateforme the idPlateforme to set
+     */
+    public void setIdPlateforme(int idPlateforme) {
+        this.idPlateforme = idPlateforme;
     }
 }

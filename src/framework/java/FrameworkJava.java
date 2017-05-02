@@ -67,7 +67,7 @@ public class FrameworkJava {
 
         e1.InitTousLesLiens(l1); 
         
-        Canal canal1 = new Canal("Bonjour");
+        Canal canal1 = new Canal(1, "Bonjour");
         canal1.setListeUtilisateurs();
         
         Utilisateur u5 = new Utilisateur(6,"Le petit génie", "Drogue_dure");
