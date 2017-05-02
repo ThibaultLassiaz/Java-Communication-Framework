@@ -11,7 +11,7 @@ public class TestServer {
     public static void main(String[] args) throws Exception {
         ServerImplementation server = new ServerImplementation();
         DatabaseConnection dc = ServerImplementation.getConnection();
-        DatabaseSQLRunner sqlrunner = new DatabaseSQLRunner(dc.getConnection());
+        /*DatabaseSQLRunner sqlrunner = new DatabaseSQLRunner(dc.getConnection());
         sqlrunner.runSQLScript(new BufferedReader(new FileReader("chemin_script_sql.sql")));
         /*DatabaseManager.deleteBD(dc.getConnection());
         DatabaseManager.initializeBD(dc.getConnection());
