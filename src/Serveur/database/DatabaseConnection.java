@@ -54,19 +54,18 @@ public class DatabaseConnection {
      * Check if the login + password tuple exists in the database Synchronised
      * method for future Threading
      *
-     * @param conn Connection
      * @param login Potential login
      * @param password Potential password
      * @return true if the tuple exists, false otherwise
      * @throws SQLException
      */
-    public synchronized boolean checkAuthenticity(Connection conn, String login, String password) throws SQLException {
-        try (Statement stmt = conn.createStatement()) {
+    public synchronized boolean checkAuthenticity(String login, String password) throws SQLException {
+        try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT idUt FROM Utilisateur WHERE pseudo='" + login + "' AND motDePasse='" + password + "'");
             return rs.next();
         } catch (SQLException e) {
             System.out.println("Erreur de connexion : " + e.getMessage());
-            DatabaseManager.rollback(this.getConnection());
+            connection.rollback();
             return false;
         }
     }

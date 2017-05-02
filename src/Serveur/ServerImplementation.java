@@ -136,7 +136,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
      */
     @Override
     public boolean connect(String login, String password) throws RemoteException, SQLException {
-        return dc.checkAuthenticity(dc.getConnection(), login, password);
+        return dc.checkAuthenticity(login, password);
     }
 
     /**
@@ -157,8 +157,8 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     }
 
     @Override
-    public void uploadFichier(FileExtended fe) throws IOException, RemoteException {
-        this.copy(this.getInputStream(fe), this.getOutputStream(new FileExtended(new File("D:\\RMI\\upload.mp4"))));
+    public void uploadFichier(FileExtended fe, String path) throws IOException, RemoteException {
+        this.copy(this.getInputStream(fe), this.getOutputStream(new FileExtended(new File(path))));
         // Appeler insert pour mettre les infos du fichier en bd
     }
     

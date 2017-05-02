@@ -55,9 +55,10 @@ public interface ServerInterface extends Remote {
      * données
      *
      * @param fe le fichier à envoyer sur le serveur
+     * @param path l'emplacement du fichier téléchargé sur le serveur
      * @throws IOException
      * @throws RemoteException
      */
-    public void uploadFichier(FileExtended fe) throws IOException, RemoteException;
+    public void uploadFichier(FileExtended fe, String path) throws IOException, RemoteException;
 
 }
