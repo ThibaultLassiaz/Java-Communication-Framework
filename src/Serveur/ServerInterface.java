@@ -60,5 +60,7 @@ public interface ServerInterface extends Remote {
      * @throws RemoteException
      */
     public void uploadFichier(FileExtended fe, String path) throws IOException, RemoteException;
+    
+    public void downloadFichier(FileExtended fe, String path) throws IOException, RemoteException;
 
 }

@@ -159,14 +159,11 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     @Override
     public void uploadFichier(FileExtended fe, String path) throws IOException, RemoteException {
         this.copy(this.getInputStream(fe), this.getOutputStream(new FileExtended(new File(path))));
-        // Appeler insert pour mettre les infos du fichier en bd
     }
     
-    public void downloadFichier(String nomFichier) throws IOException, RemoteException {
-        // Appeler select pour recuperer le fichier
-        FileExtended fe = null;
-        // Récupérer le fichier sur le server
-        this.copy(this.getInputStream(fe), this.getOutputStream(fe));
+    @Override
+    public void downloadFichier(FileExtended fe, String path) throws IOException, RemoteException {
+        this.copy(this.getInputStream(fe), this.getOutputStream(new FileExtended(new File(path))));
     }
 
 }
