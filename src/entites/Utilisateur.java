@@ -21,6 +21,7 @@ import java.util.logging.Logger;
         private String pseudo;
         private String motDePasse;
         private ArrayList<ListeLien> tousMesLiens;
+        private Plateforme currentPlateforme;
 
     public Utilisateur (int id, String pseudo, String mdp) throws RemoteException{
         this.setId(id);
@@ -115,6 +116,16 @@ import java.util.logging.Logger;
     @Override
     public void setListLien(ArrayList<ListeLien> listLien) throws RemoteException{
         this.tousMesLiens = listLien;
+    }
+
+    @Override
+    public Plateforme getCurrentPlateforme() throws RemoteException {
+        return this.currentPlateforme;
+    }
+
+    @Override
+    public void setCurrentPlateforme(Plateforme p) throws RemoteException {
+        this.currentPlateforme=p;
     }
 
 }

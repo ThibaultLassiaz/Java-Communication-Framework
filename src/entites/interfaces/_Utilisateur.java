@@ -6,6 +6,7 @@
 package entites.interfaces;
 
 import entites.ListeLien;
+import entites.Plateforme;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -31,4 +32,8 @@ public interface _Utilisateur extends Remote{
     public ArrayList<ListeLien> getListLien() throws RemoteException;
     
     public void setListLien(ArrayList<ListeLien> listLien) throws RemoteException;
+    
+    public Plateforme getCurrentPlateforme() throws RemoteException;
+    
+    public void setCurrentPlateforme(Plateforme p) throws RemoteException;
 }
