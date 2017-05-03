@@ -5,13 +5,14 @@
  */
 package entites;
 
+import entites.interfaces._Utilisateur;
 import java.util.ArrayList;
 
 /**
  *
  * @author hanene
  */
-    public class Utilisateur {
+    public class Utilisateur implements _Utilisateur{
         private int id;
         private String pseudo;
         private String motDePasse;
@@ -45,11 +46,12 @@ import java.util.ArrayList;
     /**
      * @return the id
      */
+    @Override
     public int getId() {
         return id;
     }
 
-    
+    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -57,6 +59,7 @@ import java.util.ArrayList;
     /**
      * @return the pseudo
      */
+    @Override
     public String getPseudo() {
         return pseudo;
     }
@@ -64,6 +67,7 @@ import java.util.ArrayList;
     /**
      * @param pseudo the pseudo to set
      */
+    @Override
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
@@ -71,6 +75,7 @@ import java.util.ArrayList;
     /**
      * @return the motDePasse
      */
+    @Override
     public String getMotDePasse() {
         return motDePasse;
     }
@@ -78,6 +83,7 @@ import java.util.ArrayList;
     /**
      * @param motDePasse the motDePasse to set
      */
+    @Override
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
@@ -85,6 +91,7 @@ import java.util.ArrayList;
     /**
      * @return the listLien
      */
+    @Override
     public ArrayList<ListeLien> getListLien() {
         return tousMesLiens;
     }
@@ -92,6 +99,7 @@ import java.util.ArrayList;
     /**
      * @param listLien the listLien to set
      */
+    @Override
     public void setListLien(ArrayList<ListeLien> listLien) {
         this.tousMesLiens = listLien;
     }
