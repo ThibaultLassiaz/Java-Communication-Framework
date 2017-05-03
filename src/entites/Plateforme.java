@@ -6,6 +6,7 @@
 package entites;
 
 import entites.interfaces._Plateforme;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -18,59 +19,66 @@ public class Plateforme implements _Plateforme{
     private String NomPlateforme;
     private ArrayList<Utilisateur> listeUtilisateurs;
     
-    public Plateforme(int id, String nom) {
+    public Plateforme(int id, String nom) throws RemoteException {
         this.setIdPlateforme(id);
         this.setNomPlateforme(nom);
         this.setListeUtilisateurs();
     }
     
-    public void getAllUserOnPlateform() {
+    public void getAllUserOnPlateform() throws RemoteException {
         for( Utilisateur u : getListeUtilisateurs())
         {
             System.out.println(u.getPseudo());
         }
     }   
     
-    public void addUser(Utilisateur u){
+    @Override
+    public void addUser(Utilisateur u) throws RemoteException{
         this.listeUtilisateurs.add(u);
     }
     
     /**
      * @return the NomPlateforme
      */
-    public String getNomPlateforme() {
+    @Override
+    public String getNomPlateforme() throws RemoteException{
         return NomPlateforme;
     }
 
     /**
      * @param NomPlateforme the NomPlateforme to set
      */
-    public void setNomPlateforme(String NomPlateforme) {
+    @Override
+    public void setNomPlateforme(String NomPlateforme) throws RemoteException{
         this.NomPlateforme = NomPlateforme;
     }
 
     /**
      * @return the listeUtilisateurs
      */
-    public ArrayList<Utilisateur> getListeUtilisateurs() {
+    @Override
+    public ArrayList<Utilisateur> getListeUtilisateurs() throws RemoteException{
         return listeUtilisateurs;
     }
-
-    public void setListeUtilisateurs() {
+    
+    @Override
+    public void setListeUtilisateurs() throws RemoteException{
         this.listeUtilisateurs =  new ArrayList();
     }
 
     /**
      * @return the idPlateforme
      */
-    public int getIdPlateforme() {
+    @Override
+    public int getIdPlateforme() throws RemoteException{
         return idPlateforme;
     }
 
     /**
      * @param idPlateforme the idPlateforme to set
      */
-    public void setIdPlateforme(int idPlateforme) {
+    @Override
+    public void setIdPlateforme(int idPlateforme) throws RemoteException{
         this.idPlateforme = idPlateforme;
     }
     
@@ -79,7 +87,7 @@ public class Plateforme implements _Plateforme{
      * @param id l'identifiant d'un utilisateur
      * @return true si l'utilisateur d'identifiant id appartient à la plateforme
      */
-    public boolean contientUtilisateur(int id){
+    public boolean contientUtilisateur(int id) throws RemoteException{
         for(Utilisateur utilisateur : listeUtilisateurs) {
             if(utilisateur.getId()==id){
                 return true;

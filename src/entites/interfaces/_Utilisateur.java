@@ -7,6 +7,7 @@ package entites.interfaces;
 
 import entites.ListeLien;
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -15,19 +16,19 @@ import java.util.ArrayList;
  */
 public interface _Utilisateur extends Remote{
     
-    public int getId();
+    public int getId() throws RemoteException;
     
-    public void setId(int id);
+    public void setId(int id) throws RemoteException;
     
-    public String getPseudo();
+    public String getPseudo() throws RemoteException;
     
-    public void setPseudo(String pseudo);
+    public void setPseudo(String pseudo) throws RemoteException;
     
-    public String getMotDePasse();
+    public String getMotDePasse() throws RemoteException;
     
-    public void setMotDePasse(String motDePasse);
+    public void setMotDePasse(String motDePasse) throws RemoteException;
     
-    public ArrayList<ListeLien> getListLien();
+    public ArrayList<ListeLien> getListLien() throws RemoteException;
     
-    public void setListLien(ArrayList<ListeLien> listLien);
+    public void setListLien(ArrayList<ListeLien> listLien) throws RemoteException;
 }

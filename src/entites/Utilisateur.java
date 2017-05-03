@@ -6,6 +6,7 @@
 package entites;
 
 import entites.interfaces._Utilisateur;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -18,23 +19,23 @@ import java.util.ArrayList;
         private String motDePasse;
         private ArrayList<ListeLien> tousMesLiens;
 
-    public Utilisateur (int id, String pseudo, String mdp){
+    public Utilisateur (int id, String pseudo, String mdp) throws RemoteException{
         this.setId(id);
         this.setPseudo(pseudo);
         this.setMotDePasse(mdp);
     }
 
-    public Utilisateur (int id, String pseudo, String mdp, ArrayList<ListeLien> listeLaison) {
+    public Utilisateur (int id, String pseudo, String mdp, ArrayList<ListeLien> listeLaison) throws RemoteException {
         this.setPseudo(pseudo);
         this.setMotDePasse(mdp);
         this.setListLien(listeLaison);
     }
     
-    public void AddListeLien(ListeLien listLien) {
+    public void AddListeLien(ListeLien listLien) throws RemoteException {
         this.getListLien().add(listLien);
     }
     
-    public void InitTousLesLiens(ListeLien listLien) {
+    public void InitTousLesLiens(ListeLien listLien) throws RemoteException {
         this.setListLien(new ArrayList<ListeLien>());
         this.getListLien().add(listLien);
     }
@@ -47,12 +48,12 @@ import java.util.ArrayList;
      * @return the id
      */
     @Override
-    public int getId() {
+    public int getId() throws RemoteException{
         return id;
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(int id) throws RemoteException{
         this.id = id;
     }
     
@@ -60,7 +61,7 @@ import java.util.ArrayList;
      * @return the pseudo
      */
     @Override
-    public String getPseudo() {
+    public String getPseudo() throws RemoteException{
         return pseudo;
     }
 
@@ -68,7 +69,7 @@ import java.util.ArrayList;
      * @param pseudo the pseudo to set
      */
     @Override
-    public void setPseudo(String pseudo) {
+    public void setPseudo(String pseudo) throws RemoteException{
         this.pseudo = pseudo;
     }
 
@@ -76,7 +77,7 @@ import java.util.ArrayList;
      * @return the motDePasse
      */
     @Override
-    public String getMotDePasse() {
+    public String getMotDePasse() throws RemoteException{
         return motDePasse;
     }
 
@@ -84,7 +85,7 @@ import java.util.ArrayList;
      * @param motDePasse the motDePasse to set
      */
     @Override
-    public void setMotDePasse(String motDePasse) {
+    public void setMotDePasse(String motDePasse) throws RemoteException{
         this.motDePasse = motDePasse;
     }
 
@@ -92,7 +93,7 @@ import java.util.ArrayList;
      * @return the listLien
      */
     @Override
-    public ArrayList<ListeLien> getListLien() {
+    public ArrayList<ListeLien> getListLien() throws RemoteException{
         return tousMesLiens;
     }
 
@@ -100,7 +101,7 @@ import java.util.ArrayList;
      * @param listLien the listLien to set
      */
     @Override
-    public void setListLien(ArrayList<ListeLien> listLien) {
+    public void setListLien(ArrayList<ListeLien> listLien) throws RemoteException{
         this.tousMesLiens = listLien;
     }
 

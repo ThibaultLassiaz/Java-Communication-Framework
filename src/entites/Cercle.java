@@ -6,6 +6,7 @@
 package entites;
 
 import entites.interfaces._Cercle;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -27,7 +28,7 @@ public class Cercle<T> implements _Cercle<T>{
      * @return the listeT
      */
     @Override
-    public ArrayList<T> getListeT() {
+    public ArrayList<T> getListeT()throws RemoteException {
         return listeT;
     }
 
@@ -35,7 +36,7 @@ public class Cercle<T> implements _Cercle<T>{
      * @param listeT the listeT to set
      */
     @Override
-    public void setListeT(ArrayList<T> listeT) {
+    public void setListeT(ArrayList<T> listeT) throws RemoteException{
         this.listeT = listeT;
     }
 
@@ -43,7 +44,7 @@ public class Cercle<T> implements _Cercle<T>{
      * @return the nomCercle
      */
     @Override
-    public String getNomCercle() {
+    public String getNomCercle() throws RemoteException{
         return nomCercle;
     }
 
@@ -51,7 +52,7 @@ public class Cercle<T> implements _Cercle<T>{
      * @param nomCercle the nomCercle to set
      */
     @Override
-    public void setNomCercle(String nomCercle) {
+    public void setNomCercle(String nomCercle) throws RemoteException{
         this.nomCercle = nomCercle;
     }
     

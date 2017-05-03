@@ -6,21 +6,27 @@
 package entites.interfaces;
 
 import entites.Utilisateur;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  *
  * @author Lucas
  */
-public interface _Plateforme {
+public interface _Plateforme extends Remote{
     
-    public int getIdPlateforme();
+    public int getIdPlateforme() throws RemoteException;
     
-    public void setIdPlateforme(int id);
+    public void setIdPlateforme(int id) throws RemoteException;
     
-    public ArrayList<Utilisateur> getListeUtilisateurs();
+    public String getNomPlateforme() throws RemoteException;
     
-    public void setListeUtilisateurs();
+    public void setNomPlateforme(String nomPlateforme) throws RemoteException;
     
-    public void addUser(Utilisateur u);
+    public ArrayList<Utilisateur> getListeUtilisateurs() throws RemoteException;
+    
+    public void setListeUtilisateurs() throws RemoteException;
+    
+    public void addUser(Utilisateur u) throws RemoteException;
 }

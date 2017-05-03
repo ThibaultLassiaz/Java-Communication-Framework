@@ -5,19 +5,21 @@
  */
 package entites.interfaces;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  *
  * @author Lucas
  */
-public interface _Cercle<T> {
+public interface _Cercle<T> extends Remote{
     
-    public ArrayList<T> getListeT();
+    public ArrayList<T> getListeT() throws RemoteException;
     
-    public void setListeT(ArrayList<T> listeT);
+    public void setListeT(ArrayList<T> listeT) throws RemoteException;
     
-    public String getNomCercle();
+    public String getNomCercle() throws RemoteException;
     
-    public void setNomCercle(String nomCercle);
+    public void setNomCercle(String nomCercle) throws RemoteException;
 }
