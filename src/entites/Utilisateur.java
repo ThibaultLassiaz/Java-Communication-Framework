@@ -9,6 +9,8 @@ import entites.interfaces._Utilisateur;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,6 +45,15 @@ import java.util.ArrayList;
 
     public String getCurrentUserType() {
         return this.getClass().getSimpleName();
+    }
+    
+    public String toString () {
+            try {
+                return this.getPseudo();
+            } catch (RemoteException ex) {
+                Logger.getLogger(Utilisateur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return null;
     }
 
     /**

@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package entites;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Asus G75
  */
-public class ListeLien<T> {
+public class ListeLien<T> implements Serializable {
     
     private ArrayList<T> listelien;
 
