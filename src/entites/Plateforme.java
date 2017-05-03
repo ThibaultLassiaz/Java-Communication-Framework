@@ -72,4 +72,18 @@ public class Plateforme {
     public void setIdPlateforme(int idPlateforme) {
         this.idPlateforme = idPlateforme;
     }
+    
+    /**
+     * 
+     * @param id l'identifiant d'un utilisateur
+     * @return true si l'utilisateur d'identifiant id appartient à la plateforme
+     */
+    public boolean contientUtilisateur(int id){
+        for(Utilisateur utilisateur : listeUtilisateurs) {
+            if(utilisateur.getId()==id){
+                return true;
+            }
+        }
+        return false;
+    }
 }
