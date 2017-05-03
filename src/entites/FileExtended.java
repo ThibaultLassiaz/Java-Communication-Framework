@@ -5,17 +5,21 @@
  */
 package entites;
 
+import entites.interfaces._FileExtended;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author guezel
  */
-public class FileExtended implements Serializable {
+public class FileExtended implements Serializable, _FileExtended {
 
     private int id;
     private final File file;
@@ -59,56 +63,64 @@ public class FileExtended implements Serializable {
     /**
      * @return the id
      */
-    public int getId() {
+    @Override
+    public int getId() throws RemoteException{
         return id;
     }
 
     /**
      * @return the file
      */
-    public File getFile() {
+    @Override
+    public File getFile() throws RemoteException{
         return file;
     }
 
     /**
      * @return the name
      */
-    public String getName() {
+    @Override
+    public String getName() throws RemoteException{
         return name;
     }
 
     /**
      * @return the path
      */
-    public String getPath() {
+    @Override
+    public String getPath() throws RemoteException{
         return path;
     }
 
     /**
      * @return the lastModifiedDate
      */
-    public long getLastModifiedDate() {
+    @Override
+    public long getLastModifiedDate() throws RemoteException{
         return lastModifiedDate;
     }
 
     /**
      * @return the size
      */
-    public long getSize() {
+    @Override
+    public long getSize() throws RemoteException{
         return size;
     }
 
     /**
      * @return the extension
      */
-    public String getExtension() {
+    @Override
+    public String getExtension() throws RemoteException{
         return extension;
     }
 
     /**
      * @return the type
      */
-    public TypeFichier getType() {
+    @Override
+    public TypeFichier getType() throws RemoteException{
         return type;
     }
 
@@ -130,45 +142,51 @@ public class FileExtended implements Serializable {
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    @Override
+    public void setId(int id) throws RemoteException{
         this.id = id;
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(String name) {
+    @Override
+    public void setName(String name) throws RemoteException{
         this.name = name;
     }
 
     /**
      * @param path the path to set
      */
-    public void setPath(String path) {
+    @Override
+    public void setPath(String path) throws RemoteException{
         this.path = path;
     }
 
     /**
      */
-    public void setLastModifiedDate() {
+    @Override
+    public void setLastModifiedDate() throws RemoteException{
         this.lastModifiedDate = this.file.lastModified();
     }
 
     /**
      * @param size the size to set
      */
-    public void setSize(long size) {
+    @Override
+    public void setSize(long size) throws RemoteException{
         this.size = size;
     }
 
     /**
      * @param extension the extension to set
      */
-    public void setExtension(String extension) {
+    @Override
+    public void setExtension(String extension) throws RemoteException{
         this.extension = extension;
     }
 
-    private void fileExtension() {
+    private void fileExtension() throws RemoteException {
         String n = this.getName();
         if (n.lastIndexOf(".") != -1 && n.lastIndexOf(".") != 0) {
             this.setExtension(n.substring(n.lastIndexOf(".") + 1));
@@ -184,7 +202,7 @@ public class FileExtended implements Serializable {
         this.type = type;
     }
 
-    private void type() {
+    private void type() throws RemoteException {
         if (this.isVideo()) {
             this.setType(TypeFichier.V);
         } else if (this.isText()) {
@@ -198,8 +216,16 @@ public class FileExtended implements Serializable {
      *
      * @return vrai si l'extension est présente dans la VIDEO_EXTENSION_LIST
      */
-    public boolean isVideo() {
-        return getVIDEO_EXTENSIONS().stream().anyMatch((s) -> (this.getExtension().equals(s)));
+    public boolean isVideo() throws RemoteException{
+        return getVIDEO_EXTENSIONS().stream().anyMatch((s) -> {
+            try {
+                this.getExtension().equals(s);
+            } catch (RemoteException ex) {
+                Logger.getLogger(FileExtended.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
+        });
+        
     }
 
     /**
@@ -207,7 +233,14 @@ public class FileExtended implements Serializable {
      * @return vrai si l'extension est présente dans la TEXTFILE_EXTENSION_LIST
      */
     public boolean isText() {
-        return getTEXT_EXTENSIONS().stream().anyMatch((s) -> (this.getExtension().equals(s)));
+        return getTEXT_EXTENSIONS().stream().anyMatch((s) -> {
+            try {
+                this.getExtension().equals(s);
+            } catch (RemoteException ex) {
+                Logger.getLogger(FileExtended.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
+        });
     }
 
     public void addVideoExtension(String ext) {
