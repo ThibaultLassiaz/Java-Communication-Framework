@@ -5,13 +5,15 @@
  */
 package entites;
 
+import entites.interfaces._Commentaire;
+import java.rmi.RemoteException;
 import java.util.Date;
 
 /**
  *
  * @author hanene
  */
-public class Commentaire {
+public class Commentaire implements _Commentaire{
     private int id;
     private String commentaire;
     private Date dateComm;
@@ -20,42 +22,48 @@ public class Commentaire {
     /**
      * @return the id
      */
-    public int getId() {
+    @Override
+    public int getId() throws RemoteException{
         return id;
     }
 
     /**
      * @return the commentaire
      */
-    public String getCommentaire() {
+    @Override
+    public String getCommentaire() throws RemoteException{
         return commentaire;
     }
 
     /**
      * @param commentaire the commentaire to set
      */
-    public void setCommentaire(String commentaire) {
+    @Override
+    public void setCommentaire(String commentaire) throws RemoteException{
         this.commentaire = commentaire;
     }
 
     /**
      * @return the dateComm
      */
-    public Date getDateComm() {
+    @Override
+    public Date getDateComm() throws RemoteException{
         return dateComm;
     }
 
     /**
      * @param dateComm the dateComm to set
      */
-    public void setDateComm(Date dateComm) {
+    @Override
+    public void setDateComm(Date dateComm) throws RemoteException{
         this.dateComm = dateComm;
     }
 
     /**
      * @return the idcible
      */
-    public int getIdcible() {
+    @Override
+    public int getIdcible() throws RemoteException{
         return idcible;
     }
     
