@@ -47,10 +47,10 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
      * @param ip l'adresse ip du serveur
      * @throws Exception
      */
-    public void start(String ip) throws Exception {
+    public void start(String ip, String binding) throws Exception {
         System.setProperty("java.rmi.server.hostname", ip);
         rmiRegistry = LocateRegistry.createRegistry(1099);
-        rmiRegistry.bind("server", this);
+        rmiRegistry.bind(binding, this);
         System.out.println("Server started");
     }
 
@@ -62,10 +62,10 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
      * @param port le port du registre rmi
      * @throws Exception
      */
-    public void start(String ip, int port) throws Exception {
+    public void start(String ip, int port, String binding) throws Exception {
         System.setProperty("java.rmi.server.hostname", ip);
         rmiRegistry = LocateRegistry.createRegistry(port);
-        rmiRegistry.bind("server", this);
+        rmiRegistry.bind(binding, this);
         System.out.println("Server started");
     }
 
