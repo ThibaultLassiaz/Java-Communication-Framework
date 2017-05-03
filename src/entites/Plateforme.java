@@ -6,6 +6,7 @@
 package entites;
 
 import entites.interfaces._Plateforme;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Asus G75
  */
-public class Plateforme implements _Plateforme{
+public class Plateforme implements _Plateforme, Serializable{
        
     private int idPlateforme;
     private String NomPlateforme;
