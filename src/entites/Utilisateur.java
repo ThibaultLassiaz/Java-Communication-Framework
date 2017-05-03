@@ -6,6 +6,7 @@
 package entites;
 
 import entites.interfaces._Utilisateur;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author hanene
  */
-    public class Utilisateur implements _Utilisateur{
+    public class Utilisateur implements _Utilisateur, Serializable{
         private int id;
         private String pseudo;
         private String motDePasse;
