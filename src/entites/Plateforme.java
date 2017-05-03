@@ -5,13 +5,14 @@
  */
 package entites;
 
+import entites.interfaces._Plateforme;
 import java.util.ArrayList;
 
 /**
  *
  * @author Asus G75
  */
-public class Plateforme {
+public class Plateforme implements _Plateforme{
        
     private int idPlateforme;
     private String NomPlateforme;
