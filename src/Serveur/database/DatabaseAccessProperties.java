@@ -21,6 +21,10 @@ public class DatabaseAccessProperties {
     private final String dbUrl;
     private final String username, password;
     
+    /**
+     *
+     * @param propertiesFile
+     */
     public DatabaseAccessProperties(String propertiesFile) {
         try {
             prop = new Properties();
@@ -36,18 +40,34 @@ public class DatabaseAccessProperties {
         password = prop.getProperty("database.password");
     }
     
+    /**
+     *
+     * @return
+     */
     public String getJdbcDriver() {
         return jdbcDriver;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getDatabaseUrl() {
         return dbUrl;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
         return username;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }

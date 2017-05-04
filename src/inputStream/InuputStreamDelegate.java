@@ -17,6 +17,10 @@ public class InuputStreamDelegate extends InputStream implements Serializable{
 
     private final InputStreamInterface isi;
     
+    /**
+     * 
+     * @param isi 
+     */
     public InuputStreamDelegate(InputStreamInterface isi) {
         this.isi=isi;
     }

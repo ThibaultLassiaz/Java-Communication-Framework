@@ -20,12 +20,22 @@ public class Plateforme implements _Plateforme, Serializable{
     private String NomPlateforme;
     private ArrayList<Utilisateur> listeUtilisateurs;
     
+    /**
+     *
+     * @param id
+     * @param nom
+     * @throws RemoteException
+     */
     public Plateforme(int id, String nom) throws RemoteException {
         this.setIdPlateforme(id);
         this.setNomPlateforme(nom);
         this.setListeUtilisateurs();
     }
     
+    /**
+     *
+     * @throws RemoteException
+     */
     public void getAllUserOnPlateform() throws RemoteException {
         for( Utilisateur u : getListeUtilisateurs())
         {
@@ -87,6 +97,7 @@ public class Plateforme implements _Plateforme, Serializable{
      * 
      * @param id l'identifiant d'un utilisateur
      * @return true si l'utilisateur d'identifiant id appartient à la plateforme
+     * @throws java.rmi.RemoteException
      */
     public boolean contientUtilisateur(int id) throws RemoteException{
         for(Utilisateur utilisateur : listeUtilisateurs) {

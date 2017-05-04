@@ -48,6 +48,14 @@ public interface ServerInterface extends Remote {
      */
     public InputStream getInputStream(FileExtended fe) throws IOException, RemoteException;
 
+    /**
+     *
+     * @param login
+     * @param password
+     * @return
+     * @throws RemoteException
+     * @throws SQLException
+     */
     public boolean connect(String login, String password) throws RemoteException, SQLException;
 
     /**
@@ -61,6 +69,13 @@ public interface ServerInterface extends Remote {
      */
     public void uploadFichier(FileExtended fe, String path) throws IOException, RemoteException;
     
+    /**
+     *
+     * @param fe
+     * @param path
+     * @throws IOException
+     * @throws RemoteException
+     */
     public void downloadFichier(FileExtended fe, String path) throws IOException, RemoteException;
 
 }

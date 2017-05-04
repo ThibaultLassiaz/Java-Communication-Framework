@@ -16,17 +16,51 @@ import java.util.ArrayList;
  */
 public interface _Plateforme extends Remote{
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public int getIdPlateforme() throws RemoteException;
     
+    /**
+     *
+     * @param id
+     * @throws RemoteException
+     */
     public void setIdPlateforme(int id) throws RemoteException;
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public String getNomPlateforme() throws RemoteException;
     
+    /**
+     *
+     * @param nomPlateforme
+     * @throws RemoteException
+     */
     public void setNomPlateforme(String nomPlateforme) throws RemoteException;
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public ArrayList<Utilisateur> getListeUtilisateurs() throws RemoteException;
     
+    /**
+     *
+     * @throws RemoteException
+     */
     public void setListeUtilisateurs() throws RemoteException;
     
+    /**
+     *
+     * @param u
+     * @throws RemoteException
+     */
     public void addUser(Utilisateur u) throws RemoteException;
 }

@@ -48,6 +48,11 @@ public class FileExtended implements Serializable, _FileExtended {
         }
     };
 
+    /**
+     *
+     * @param f
+     * @throws IOException
+     */
     public FileExtended(File f) throws IOException {
         this.file = f;
         this.name = f.getName();
@@ -215,6 +220,7 @@ public class FileExtended implements Serializable, _FileExtended {
     /**
      *
      * @return vrai si l'extension est présente dans la VIDEO_EXTENSION_LIST
+     * @throws java.rmi.RemoteException
      */
     public boolean isVideo() throws RemoteException{
         return getVIDEO_EXTENSIONS().stream().anyMatch((s) -> {
@@ -243,10 +249,18 @@ public class FileExtended implements Serializable, _FileExtended {
         });
     }
 
+    /**
+     *
+     * @param ext
+     */
     public void addVideoExtension(String ext) {
         getVIDEO_EXTENSIONS().add(ext);
     }
 
+    /**
+     *
+     * @param ext
+     */
     public void addTextExtension(String ext) {
         getTEXT_EXTENSIONS().add(ext);
     }

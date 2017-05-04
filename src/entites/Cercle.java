@@ -12,13 +12,18 @@ import java.util.ArrayList;
 /**
  *
  * @author hanene
+ * @param <T>
  */
 public class Cercle<T> implements _Cercle<T>{
     
     private ArrayList<T> listeT;
     private String nomCercle;
 
-
+    /**
+     *
+     * @param listeT
+     * @param nomCercle
+     */
     public Cercle(ArrayList<T> listeT, String nomCercle) {
         this.listeT = listeT;
         this.nomCercle = nomCercle;

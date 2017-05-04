@@ -10,19 +10,30 @@ import java.util.ArrayList;
 /**
  *
  * @author Asus G75
+ * @param <T>
  */
 public class ListeLien<T> implements Serializable {
     
     private ArrayList<T> listelien;
 
+    /**
+     *
+     */
     public ListeLien() {
         this.InstanceListeLien();
     }
     
+    /**
+     *
+     * @param valeur
+     */
     public void AddLienToList(T valeur) {
         this.listelien.add(valeur);
     }
     
+    /**
+     *
+     */
     public void InstanceListeLien() {
         this.listelien = new ArrayList();
     }

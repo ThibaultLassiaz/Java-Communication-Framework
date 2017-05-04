@@ -15,16 +15,46 @@ import java.util.Date;
  */
 public interface _Commentaire extends Remote{
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public int getId() throws RemoteException;
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public String getCommentaire() throws RemoteException;
     
+    /**
+     *
+     * @param commentaire
+     * @throws RemoteException
+     */
     public void setCommentaire(String commentaire) throws RemoteException;
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public Date getDateComm() throws RemoteException;
     
+    /**
+     *
+     * @param dateComm
+     * @throws RemoteException
+     */
     public void setDateComm(Date dateComm) throws RemoteException;
     
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
     public int getIdcible() throws RemoteException;
     
     

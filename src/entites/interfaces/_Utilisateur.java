@@ -17,23 +17,73 @@ import java.util.ArrayList;
  */
 public interface _Utilisateur extends Remote{
     
+    /**
+     * 
+     * @return
+     * @throws RemoteException 
+     */
     public int getId() throws RemoteException;
     
+    /**
+     * 
+     * @param id
+     * @throws RemoteException 
+     */
     public void setId(int id) throws RemoteException;
     
+    /**
+     * 
+     * @return
+     * @throws RemoteException 
+     */
     public String getPseudo() throws RemoteException;
     
+    /**
+     * 
+     * @param pseudo
+     * @throws RemoteException 
+     */
     public void setPseudo(String pseudo) throws RemoteException;
     
+    /**
+     * 
+     * @return
+     * @throws RemoteException 
+     */
     public String getMotDePasse() throws RemoteException;
     
+    /**
+     * 
+     * @param motDePasse
+     * @throws RemoteException 
+     */
     public void setMotDePasse(String motDePasse) throws RemoteException;
     
+    /**
+     * 
+     * @return
+     * @throws RemoteException 
+     */
     public ArrayList<ListeLien> getListLien() throws RemoteException;
     
+    /**
+     * 
+     * @param listLien
+     * @throws RemoteException 
+     */
     public void setListLien(ArrayList<ListeLien> listLien) throws RemoteException;
     
+    /**
+     * 
+     * @return
+     * @throws RemoteException 
+     */
     public Plateforme getCurrentPlateforme() throws RemoteException;
     
+    /**
+     * 
+     * @param p
+     * @throws RemoteException 
+     */
     public void setCurrentPlateforme(Plateforme p) throws RemoteException;
 }

@@ -21,6 +21,11 @@ public class DatabaseConnection {
 
     private static Connection connection;
 
+    /**
+     *
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public DatabaseConnection() throws SQLException, ClassNotFoundException {
         connection = this.databaseConnection();
     }

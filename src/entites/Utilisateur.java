@@ -23,27 +23,56 @@ import java.util.logging.Logger;
         private ArrayList<ListeLien> tousMesLiens;
         private Plateforme currentPlateforme;
 
+    /**
+     *
+     * @param id
+     * @param pseudo
+     * @param mdp
+     * @throws RemoteException
+     */
     public Utilisateur (int id, String pseudo, String mdp) throws RemoteException{
         this.setId(id);
         this.setPseudo(pseudo);
         this.setMotDePasse(mdp);
     }
 
+    /**
+     *
+     * @param id
+     * @param pseudo
+     * @param mdp
+     * @param listeLaison
+     * @throws RemoteException
+     */
     public Utilisateur (int id, String pseudo, String mdp, ArrayList<ListeLien> listeLaison) throws RemoteException {
         this.setPseudo(pseudo);
         this.setMotDePasse(mdp);
         this.setListLien(listeLaison);
     }
     
+    /**
+     *
+     * @param listLien
+     * @throws RemoteException
+     */
     public void AddListeLien(ListeLien listLien) throws RemoteException {
         this.getListLien().add(listLien);
     }
     
+    /**
+     *
+     * @param listLien
+     * @throws RemoteException
+     */
     public void InitTousLesLiens(ListeLien listLien) throws RemoteException {
         this.setListLien(new ArrayList<ListeLien>());
         this.getListLien().add(listLien);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCurrentUserType() {
         return this.getClass().getSimpleName();
     }
@@ -59,6 +88,7 @@ import java.util.logging.Logger;
 
     /**
      * @return the id
+     * @throws java.rmi.RemoteException
      */
     @Override
     public int getId() throws RemoteException{
@@ -72,6 +102,7 @@ import java.util.logging.Logger;
     
     /**
      * @return the pseudo
+     * @throws java.rmi.RemoteException
      */
     @Override
     public String getPseudo() throws RemoteException{
@@ -80,6 +111,7 @@ import java.util.logging.Logger;
 
     /**
      * @param pseudo the pseudo to set
+     * @throws java.rmi.RemoteException
      */
     @Override
     public void setPseudo(String pseudo) throws RemoteException{
@@ -88,6 +120,7 @@ import java.util.logging.Logger;
 
     /**
      * @return the motDePasse
+     * @throws java.rmi.RemoteException
      */
     @Override
     public String getMotDePasse() throws RemoteException{
@@ -96,6 +129,7 @@ import java.util.logging.Logger;
 
     /**
      * @param motDePasse the motDePasse to set
+     * @throws java.rmi.RemoteException
      */
     @Override
     public void setMotDePasse(String motDePasse) throws RemoteException{
@@ -104,6 +138,7 @@ import java.util.logging.Logger;
 
     /**
      * @return the listLien
+     * @throws java.rmi.RemoteException
      */
     @Override
     public ArrayList<ListeLien> getListLien() throws RemoteException{
@@ -112,6 +147,7 @@ import java.util.logging.Logger;
 
     /**
      * @param listLien the listLien to set
+     * @throws java.rmi.RemoteException
      */
     @Override
     public void setListLien(ArrayList<ListeLien> listLien) throws RemoteException{

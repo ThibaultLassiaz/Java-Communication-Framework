@@ -18,6 +18,11 @@ public class OutputStreamImplementation implements OutputStreamInterface{
 
     private final OutputStream os;
     
+    /**
+     * 
+     * @param os
+     * @throws IOException 
+     */
     public OutputStreamImplementation(OutputStream os) throws IOException {
         this.os=os;
         UnicastRemoteObject.exportObject(this, 1099);

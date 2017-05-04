@@ -33,8 +33,18 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
     private static Registry rmiRegistry;
     private static DatabaseConnection dc;
     private File fileToSend;
+
+    /**
+     *
+     */
     public final static int BUFFER_SIZE = 1024 * 64;
 
+    /**
+     *
+     * @throws RemoteException
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public ServerImplementation() throws RemoteException, SQLException, ClassNotFoundException {
         super();
         dc = new DatabaseConnection();
@@ -45,6 +55,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
      * RMI
      *
      * @param ip l'adresse ip du serveur
+     * @param binding
      * @throws Exception
      */
     public void start(String ip, String binding) throws Exception {
@@ -60,6 +71,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
      *
      * @param ip l'adresse ip du serveur
      * @param port le port du registre rmi
+     * @param binding
      * @throws Exception
      */
     public void start(String ip, int port, String binding) throws Exception {
@@ -146,6 +158,13 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
         return dc;
     }
 
+    /**
+     *
+     * @param is
+     * @param os
+     * @throws IOException
+     * @throws RemoteException
+     */
     public void copy(InputStream is, OutputStream os) throws IOException, RemoteException {
         byte[] b = new byte[BUFFER_SIZE];
         int length;

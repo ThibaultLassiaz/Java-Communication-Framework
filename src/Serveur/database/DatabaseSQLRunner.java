@@ -27,6 +27,10 @@ public class DatabaseSQLRunner {
     private final Connection conn;
     private String delimiter = DEFAULT_DELITIMITER;
 
+    /**
+     * 
+     * @param conn 
+     */
     public DatabaseSQLRunner(Connection conn) {
         if (conn == null) {
             throw new RuntimeException("Il faut que la connexion à la bdd soit effectuée");
@@ -35,10 +39,23 @@ public class DatabaseSQLRunner {
         this.conn = conn;
     }
     
+    /**
+     * 
+     * @param reader
+     * @throws IOException
+     * @throws SQLException 
+     */
     public void runSQLScript(Reader reader) throws IOException, SQLException {
         runSQLScript(conn, reader);
     }
 
+    /**
+     * 
+     * @param conn
+     * @param reader
+     * @throws IOException
+     * @throws SQLException 
+     */
     private void runSQLScript(Connection conn, Reader reader) throws IOException, SQLException {
         StringBuffer command = null;
         try {

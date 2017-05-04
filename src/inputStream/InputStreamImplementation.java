@@ -19,6 +19,11 @@ public class InputStreamImplementation implements InputStreamInterface{
     private final InputStream is;
     private byte[] data;
     
+    /**
+     * 
+     * @param is
+     * @throws IOException 
+     */
     public InputStreamImplementation(InputStream is) throws IOException {
         this.is=is;
         UnicastRemoteObject.exportObject(this, 1099);

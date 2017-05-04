@@ -17,6 +17,10 @@ public class OutputStreamDelegate extends OutputStream implements Serializable{
 
     private final OutputStreamInterface osi;
     
+    /**
+     * 
+     * @param osi 
+     */
     public OutputStreamDelegate(OutputStreamInterface osi) {
         this.osi=osi;
     }

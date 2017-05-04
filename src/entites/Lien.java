@@ -16,7 +16,12 @@ public class Lien implements Serializable{
    private Utilisateur u1;
    private Utilisateur u2;
    
-   public Lien(Utilisateur u1, Utilisateur u2) {
+    /**
+     *
+     * @param u1
+     * @param u2
+     */
+    public Lien(Utilisateur u1, Utilisateur u2) {
        this.u1 = u1;
        this.u2 = u2;
    }

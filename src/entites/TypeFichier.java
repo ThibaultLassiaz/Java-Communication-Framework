@@ -10,8 +10,20 @@ package entites;
  * @author guezel
  */
 public enum TypeFichier {
+
+    /**
+     *
+     */
     V("Video"),
+
+    /**
+     *
+     */
     T("Texte"),
+
+    /**
+     *
+     */
     I("Inconnu");
     
     private String type="";
